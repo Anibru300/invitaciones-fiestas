@@ -290,6 +290,14 @@ body {
     var(--blanco) 15deg 30deg
   );
   z-index: -2;
+  animation: rotarBrillo 8s linear infinite;
+}
+
+.foto-marco::after {
+  inset: -18px;
+  background: radial-gradient(circle, rgba(255,215,0,0.4) 0%, transparent 70%);
+  z-index: -3;
+  animation: pulsoBrillo 2s ease-in-out infinite;
 }
 
 .foto {
@@ -357,6 +365,7 @@ body {
   box-shadow: 0 8px 24px rgba(249, 168, 37, 0.35);
   position: relative;
   overflow: hidden;
+  animation: pulseCuenta 2s ease-in-out infinite;
 }
 
 .cuenta-regresiva::before {
@@ -397,23 +406,31 @@ body {
 .cuenta-item {
   background: rgba(255, 255, 255, 0.22);
   border-radius: 16px;
-  padding: 12px 10px;
-  min-width: 66px;
+  padding: 14px 12px;
+  min-width: 72px;
   backdrop-filter: blur(4px);
   border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.cuenta-item:hover {
+  transform: translateY(-4px);
 }
 
 .cuenta-numero {
   font-family: 'Bangers', cursive;
-  font-size: 2rem;
+  font-size: 2.2rem;
   display: block;
   line-height: 1;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.15);
 }
 
 .cuenta-label {
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 /* Info cards */
@@ -598,6 +615,32 @@ body {
 .boton-confirmar:hover {
   transform: scale(1.03) translateY(-2px);
   box-shadow: 0 12px 32px rgba(37, 211, 102, 0.45);
+}
+
+.boton-compartir {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--amarillo) 0%, var(--naranja) 100%);
+  color: var(--negro);
+  border: none;
+  padding: 16px 32px;
+  border-radius: 50px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 800;
+  font-size: 1.05rem;
+  margin-top: 14px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(255, 152, 0, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: 100%;
+  max-width: 340px;
+}
+
+.boton-compartir:hover {
+  transform: scale(1.03) translateY(-2px);
+  box-shadow: 0 10px 26px rgba(255, 152, 0, 0.4);
 }
 
 /* Personajes */
@@ -1100,6 +1143,18 @@ body {
   font-weight: 600;
 }
 
+/* Animaciones de entrada al hacer scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Animaciones */
 @keyframes flotar {
   0%, 100% { transform: translateY(0); }
@@ -1173,6 +1228,21 @@ body {
   100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
 }
 
+@keyframes rotarBrillo {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulsoBrillo {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+
+@keyframes pulseCuenta {
+  0%, 100% { transform: scale(1); box-shadow: 0 8px 24px rgba(249, 168, 37, 0.35); }
+  50% { transform: scale(1.01); box-shadow: 0 12px 32px rgba(249, 168, 37, 0.5); }
+}
+
 /* Responsive */
 @media (max-width: 480px) {
   .overlay-titulo { font-size: 2rem; }
@@ -1201,6 +1271,9 @@ body {
   .grupo-personajes { gap: 24px; }
   .personaje-img { height: 150px; max-width: 150px; }
   .boton-confirmar { padding: 16px 24px; font-size: 1.05rem; }
+  .boton-compartir { padding: 14px 24px; font-size: 1rem; }
+  .cuenta-numero { font-size: 1.8rem; }
+  .cuenta-item { min-width: 60px; padding: 10px 8px; }
   .boton-musica { width: 46px; height: 46px; font-size: 1.2rem; top: 12px; right: 12px; }
   .pasto { height: 70px; }
   .flor { font-size: 1.8rem; }

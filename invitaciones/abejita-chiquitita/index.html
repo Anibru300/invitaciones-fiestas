@@ -54,12 +54,12 @@
       </header>
 
       <main class="cuerpo">
-        <p class="titulo">¡Estás invitado!</p>
-        <h1 class="nombre">Sofía Martínez</h1>
-        <p class="edad">¡Cumple 4 añitos! 🎂</p>
+        <p class="titulo reveal">¡Estás invitado!</p>
+        <h1 class="nombre reveal">Sofía Martínez</h1>
+        <p class="edad reveal">¡Cumple 4 añitos! 🎂</p>
 
-        <div class="cuenta-regresiva" id="cuentaRegresiva">
-          <p class="cuenta-titulo">Faltan para la fiesta...</p>
+        <div class="cuenta-regresiva reveal" id="cuentaRegresiva">
+          <p class="cuenta-titulo">🎉 Faltan para la fiesta 🎉</p>
           <div class="cuenta-items" id="cuentaItems">
             <div class="cuenta-item"><span class="cuenta-numero" id="dias">00</span><span class="cuenta-label">Días</span></div>
             <div class="cuenta-item"><span class="cuenta-numero" id="horas">00</span><span class="cuenta-label">Horas</span></div>
@@ -69,7 +69,7 @@
         </div>
 
         <div class="info-grid">
-          <div class="info-card">
+          <div class="info-card reveal">
             <div class="info-icono">📅</div>
             <div class="info-texto">
               <strong>Fecha</strong>
@@ -77,7 +77,7 @@
             </div>
           </div>
 
-          <div class="info-card">
+          <div class="info-card reveal">
             <div class="info-icono">🕒</div>
             <div class="info-texto">
               <strong>Hora</strong>
@@ -85,7 +85,7 @@
             </div>
           </div>
 
-          <div class="info-card">
+          <div class="info-card reveal">
             <div class="info-icono">👨‍👩‍👧</div>
             <div class="info-texto">
               <strong>Papás</strong>
@@ -93,7 +93,7 @@
             </div>
           </div>
 
-          <div class="info-card">
+          <div class="info-card reveal">
             <div class="info-icono">🎁</div>
             <div class="info-texto">
               <strong>Regalo</strong>
@@ -102,7 +102,7 @@
           </div>
         </div>
 
-        <section class="ubicacion">
+        <section class="ubicacion reveal">
           <h2 class="ubicacion-titulo">📍 Ubicación</h2>
           <div class="mapa-contenedor">
             <div class="mapa-placeholder">
@@ -118,7 +118,7 @@
           </div>
         </section>
 
-        <section class="galeria">
+        <section class="galeria reveal">
           <h2 class="galeria-titulo">📸 Momentos de alegría</h2>
           <div class="galeria-grid">
             <div class="galeria-item">🎈</div>
@@ -130,17 +130,21 @@
           </div>
         </section>
 
-        <p class="mensaje">
+        <p class="mensaje reveal">
           ¡No faltes! Será un día lleno de miel 🍯, dulces 🍬, juegos 🎈 y mucha diversión al estilo de la abejita Chiquitita. 🐝✨
         </p>
 
-        <p style="margin-bottom: 18px; font-size: 1rem; color: #555; font-weight: 600;">
+        <p class="reveal" style="margin-bottom: 18px; font-size: 1rem; color: #555; font-weight: 600;">
           Confirma tu asistencia antes del <strong>10 de agosto de 2026</strong>
         </p>
 
-        <a class="boton-confirmar" href="https://wa.me/5215512345678?text=¡Hola!%20Confirmo%20mi%20asistencia%20al%20cumpleaños%20de%20Sofía" target="_blank" rel="noopener">
+        <a class="boton-confirmar reveal" href="https://wa.me/5215512345678?text=¡Hola!%20Confirmo%20mi%20asistencia%20al%20cumpleaños%20de%20Sofía" target="_blank" rel="noopener">
           <span>💬</span> Confirmar por WhatsApp
         </a>
+
+        <button class="boton-compartir reveal" id="btnCompartir" type="button">
+          <span>🔗</span> Compartir invitación
+        </button>
 
         <!-- Abejitas volando por el medio de la invitación -->
         <div class="abejitas-cuerpo">
@@ -151,7 +155,7 @@
           <span class="abejita-medio" style="--delay:1.5s;--duration:5s;--top:50%">🐝</span>
         </div>
 
-        <section class="personajes">
+        <section class="personajes reveal">
           <p class="personajes-titulo">¡Nos acompañan!</p>
           <div class="grupo-personajes">
             <div class="personaje">
@@ -265,18 +269,20 @@
     }
 
     function crearConfeti() {
-      const colores = ['#FFD700', '#FF9800', '#FF80AB', '#81D4FA', '#CE93D8', '#66BB6A'];
-      for (let i = 0; i < 60; i++) {
+      const colores = ['#FFD700', '#FF9800', '#FF80AB', '#81D4FA', '#CE93D8', '#66BB6A', '#FFF176', '#FF5722'];
+      for (let i = 0; i < 140; i++) {
         setTimeout(() => {
           const confeti = document.createElement('div');
           confeti.className = 'confeti';
           confeti.style.left = Math.random() * 100 + '%';
           confeti.style.background = colores[Math.floor(Math.random() * colores.length)];
-          confeti.style.animationDuration = (2 + Math.random() * 2) + 's';
+          confeti.style.animationDuration = (2 + Math.random() * 2.5) + 's';
+          confeti.style.width = (6 + Math.random() * 8) + 'px';
+          confeti.style.height = confeti.style.width;
           confeti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
           document.body.appendChild(confeti);
-          setTimeout(() => confeti.remove(), 4000);
-        }, i * 30);
+          setTimeout(() => confeti.remove(), 5000);
+        }, i * 18);
       }
     }
 
@@ -326,6 +332,47 @@
 
     actualizarCuenta();
     setInterval(actualizarCuenta, 1000);
+
+    // Animaciones al hacer scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Efecto parallax en el fondo
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      fondo.style.transform = `translateY(${scrollY * 0.08}px)`;
+    });
+
+    // Botón compartir
+    const btnCompartir = document.getElementById('btnCompartir');
+    if (btnCompartir) {
+      btnCompartir.addEventListener('click', async () => {
+        const url = window.location.href;
+        const texto = '¡Estás invitado al cumpleaños de Sofía! 🐝🎉';
+        if (navigator.share) {
+          try {
+            await navigator.share({ title: 'Invitación de cumpleaños', text: texto, url: url });
+          } catch (err) {}
+        } else {
+          try {
+            await navigator.clipboard.writeText(url);
+            btnCompartir.innerHTML = '<span>✅</span> ¡Link copiado!';
+            setTimeout(() => {
+              btnCompartir.innerHTML = '<span>🔗</span> Compartir invitación';
+            }, 2500);
+          } catch (err) {
+            window.prompt('Copia este link para compartir:', url);
+          }
+        }
+      });
+    }
   </script>
 </body>
 </html>
