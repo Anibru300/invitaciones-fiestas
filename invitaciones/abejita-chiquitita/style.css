@@ -611,6 +611,19 @@ body {
   border-radius: 16px;
 }
 
+.personaje-img {
+  height: 140px;
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.15));
+  transition: transform 0.2s;
+}
+
+.personaje:hover .personaje-img {
+  transform: scale(1.08);
+}
+
 /* === PERSONAJES MEJORADOS CON CSS === */
 
 /* Maya */
@@ -1113,6 +1126,7 @@ body {
   .galeria-grid { gap: 8px; }
   .galeria-item { font-size: 1.8rem; }
   .grupo-personajes { gap: 24px; }
+  .personaje-img { height: 110px; max-width: 120px; }
   .boton-confirmar { padding: 16px 24px; font-size: 1.05rem; }
   .boton-musica { width: 46px; height: 46px; font-size: 1.2rem; top: 12px; right: 12px; }
   .pasto { height: 70px; }
