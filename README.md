@@ -8,7 +8,9 @@ Cada invitación es independiente y puede personalizarse con los datos del event
 
 ```
 invitaciones-fiestas/
-├── assets/               # Recursos compartidos (CSS base, imágenes, fuentes)
+├── assets/               # Recursos compartidos (CSS base, audio, imágenes)
+│   ├── css/
+│   └── audio/
 ├── invitaciones/         # Una carpeta por cada invitación
 │   └── abejita-chiquitita/
 │       ├── index.html    # Invitación lista para abrir en navegador
@@ -26,9 +28,14 @@ invitaciones-fiestas/
 ## 🚀 Cómo usar
 
 1. Abre el archivo `index.html` de la invitación en tu navegador.
-2. Edita el archivo `datos.md` con la información real del evento.
-3. Actualiza los textos de `index.html` con los datos confirmados.
-4. Si necesitas compartirla, sube la carpeta a un hosting estático (GitHub Pages, Netlify, Vercel, etc.).
+2. Presiona el botón de música 🎵 para activar el audio de fondo.
+3. Edita el archivo `datos.md` con la información real del evento.
+4. Actualiza los textos de `index.html` con los datos confirmados.
+5. Si necesitas compartirla, sube la carpeta a un hosting estático (GitHub Pages, Netlify, Vercel, etc.).
+
+## 📝 Nota sobre audio e imágenes
+
+Los recursos multimedia con copyright (canciones, personajes oficiales, etc.) se incluyen únicamente para uso personal de la invitación. No se debe redistribuir comercialmente.
 
 ## 📝 Licencia
 

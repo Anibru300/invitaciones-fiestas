@@ -2,6 +2,12 @@
 
 Plantilla de invitación con temática de **Maya la Abeja / La abejita Chiquitita**.
 
+Incluye:
+- 🎵 Música de fondo (clip de la canción del video).
+- 🐝 Personajes de la serie hechos en CSS: Maya, Willy y Flip.
+- 📱 Botón flotante para activar/desactivar la música.
+- 📲 Botón para confirmar asistencia por WhatsApp.
+
 ## Cómo personalizar
 
 1. Abre `datos.md` y reemplaza los valores ficticios por los datos reales del evento.
@@ -23,3 +29,7 @@ python -m http.server 8000
 ```
 
 Luego abre `http://localhost:8000` en tu navegador.
+
+## Nota sobre la música
+
+El audio incluido es un clip corto con fines personales para la invitación. Si deseas cambiarlo, reemplaza el archivo `assets/audio/abejita-chiquitita.mp3` con otro en formato MP3.

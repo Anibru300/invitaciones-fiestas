@@ -7,23 +7,27 @@
   --blanco: #FFFFFF;
   --miel: #E6A817;
   --naranja: #FF9F1C;
+  --verde: #7CB342;
+  --verde-oscuro: #558B2F;
+  --cielo: #E1F5FE;
 }
 
 body {
-  background: linear-gradient(135deg, var(--amarillo-claro) 0%, var(--amarillo) 100%);
+  background: linear-gradient(180deg, var(--cielo) 0%, var(--amarillo-claro) 60%, var(--amarillo) 100%);
   color: var(--negro);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
+  min-height: 100vh;
 }
 
 .invitacion {
   background: var(--blanco);
-  border-radius: 24px;
-  max-width: 480px;
+  border-radius: 28px;
+  max-width: 520px;
   width: 100%;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.18);
   overflow: hidden;
   text-align: center;
   position: relative;
@@ -33,39 +37,40 @@ body {
   background: repeating-linear-gradient(
     45deg,
     var(--amarillo),
-    var(--amarillo) 20px,
-    var(--negro) 20px,
-    var(--negro) 40px
+    var(--amarillo) 22px,
+    var(--negro) 22px,
+    var(--negro) 44px
   );
-  padding: 50px 20px 70px;
+  padding: 60px 20px 90px;
   position: relative;
-  clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
 }
 
 .abeja {
-  width: 120px;
-  height: 120px;
+  width: 130px;
+  height: 130px;
   background: var(--amarillo);
   border-radius: 50%;
   margin: 0 auto;
   position: relative;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  border: 6px solid var(--negro);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  border: 7px solid var(--negro);
+  animation: flotar 3s ease-in-out infinite;
 }
 
 .abeja::before {
   content: '';
   position: absolute;
   top: 50%;
-  left: -20%;
-  width: 140%;
-  height: 14px;
+  left: -22%;
+  width: 144%;
+  height: 16px;
   background: repeating-linear-gradient(
     90deg,
     var(--negro),
-    var(--negro) 14px,
-    transparent 14px,
-    transparent 22px
+    var(--negro) 16px,
+    transparent 16px,
+    transparent 26px
   );
   transform: translateY(-50%);
   border-radius: 4px;
@@ -74,8 +79,8 @@ body {
 .ojo {
   position: absolute;
   top: 35%;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   background: var(--negro);
   border-radius: 50%;
 }
@@ -83,96 +88,109 @@ body {
 .ojo.izq { left: 28%; }
 .ojo.der { right: 28%; }
 
+.ojo::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 7px;
+  height: 7px;
+  background: var(--blanco);
+  border-radius: 50%;
+}
+
 .sonrisa {
   position: absolute;
   bottom: 28%;
   left: 50%;
   transform: translateX(-50%);
-  width: 28px;
-  height: 12px;
-  border-bottom: 3px solid var(--negro);
-  border-radius: 0 0 20px 20px;
+  width: 32px;
+  height: 14px;
+  border-bottom: 4px solid var(--negro);
+  border-radius: 0 0 24px 24px;
 }
 
 .alas {
   position: absolute;
-  top: -20px;
+  top: -22px;
   left: 50%;
   transform: translateX(-50%);
-  width: 90px;
-  height: 50px;
-  background: rgba(255, 255, 255, 0.7);
+  width: 100px;
+  height: 55px;
+  background: rgba(255, 255, 255, 0.75);
   border-radius: 50%;
   z-index: -1;
+  animation: aletear 0.6s ease-in-out infinite alternate;
 }
 
 .cuerpo {
-  padding: 30px 28px 40px;
+  padding: 35px 28px 45px;
 }
 
 .titulo {
-  font-size: 1.3rem;
-  letter-spacing: 2px;
+  font-size: 1.4rem;
+  letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--miel);
-  margin-bottom: 8px;
-  font-weight: 800;
+  margin-bottom: 10px;
+  font-weight: 900;
 }
 
 .nombre {
-  font-size: 2.6rem;
+  font-size: 2.8rem;
   font-weight: 900;
   color: var(--negro);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   line-height: 1.1;
 }
 
 .edad {
-  font-size: 1.4rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 800;
   color: var(--naranja);
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .detalle {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin: 12px 0;
+  gap: 12px;
+  margin: 14px 0;
   font-size: 1.05rem;
   text-align: left;
 }
 
 .icono {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   background: var(--amarillo-claro);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 .mensaje {
-  margin: 28px 0 22px;
-  padding: 16px;
+  margin: 30px 0 24px;
+  padding: 18px;
   background: #FFF8DC;
-  border-radius: 16px;
+  border-radius: 18px;
   font-style: italic;
   color: #5A4A00;
+  font-size: 1.05rem;
 }
 
 .boton {
   display: inline-block;
   background: var(--naranja);
   color: var(--blanco);
-  padding: 14px 28px;
+  padding: 15px 30px;
   border-radius: 50px;
   font-weight: 800;
-  font-size: 1rem;
+  font-size: 1.05rem;
   transition: transform 0.2s, background 0.2s;
 }
 
@@ -181,11 +199,266 @@ body {
   background: var(--miel);
 }
 
+.personajes {
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 2px dashed var(--amarillo-claro);
+}
+
+.personajes-titulo {
+  font-size: 1.15rem;
+  color: var(--miel);
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.grupo-personajes {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.personaje {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: flotar 3s ease-in-out infinite;
+}
+
+.personaje:nth-child(2) { animation-delay: 0.5s; }
+.personaje:nth-child(3) { animation-delay: 1s; }
+
+.personaje-nombre {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--negro);
+  background: var(--amarillo-claro);
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+/* Maya */
+.maya {
+  width: 70px;
+  height: 80px;
+  background: var(--amarillo);
+  border-radius: 50% 50% 45% 45%;
+  position: relative;
+  border: 4px solid var(--negro);
+}
+
+.maya::before {
+  content: '';
+  position: absolute;
+  top: 42%;
+  left: -10%;
+  width: 120%;
+  height: 8px;
+  background: var(--negro);
+  border-radius: 4px;
+}
+
+.maya::after {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 18px;
+  background: var(--amarillo-claro);
+  border-radius: 50% 50% 0 0;
+  border: 3px solid var(--negro);
+  border-bottom: none;
+}
+
+.maya-ojos {
+  position: absolute;
+  top: 28%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.maya-ojo {
+  width: 8px;
+  height: 8px;
+  background: var(--negro);
+  border-radius: 50%;
+}
+
+.maya-alas {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 54px;
+  height: 26px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* Willy */
+.willy {
+  width: 78px;
+  height: 74px;
+  background: var(--amarillo);
+  border-radius: 50%;
+  position: relative;
+  border: 4px solid var(--negro);
+}
+
+.willy::before {
+  content: '';
+  position: absolute;
+  top: 46%;
+  left: -8%;
+  width: 116%;
+  height: 8px;
+  background: var(--negro);
+  border-radius: 4px;
+}
+
+.willy::after {
+  content: '';
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 14px;
+  background: var(--naranja);
+  border-radius: 8px 8px 0 0;
+  border: 3px solid var(--negro);
+  border-bottom: none;
+}
+
+.willy-ojos {
+  position: absolute;
+  top: 32%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.willy-ojo {
+  width: 9px;
+  height: 9px;
+  background: var(--negro);
+  border-radius: 50%;
+}
+
+.willy-alas {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* Flip */
+.flip {
+  width: 36px;
+  height: 90px;
+  background: var(--verde);
+  border-radius: 50% 50% 40% 40%;
+  position: relative;
+  border: 4px solid var(--verde-oscuro);
+}
+
+.flip::before,
+.flip::after {
+  content: '';
+  position: absolute;
+  top: -18px;
+  width: 10px;
+  height: 34px;
+  background: var(--verde);
+  border-radius: 50%;
+  border: 3px solid var(--verde-oscuro);
+}
+
+.flip::before { left: -6px; transform: rotate(-25deg); }
+.flip::after { right: -6px; transform: rotate(25deg); }
+
+.flip-ojos {
+  position: absolute;
+  top: 18%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.flip-ojo {
+  width: 7px;
+  height: 7px;
+  background: var(--negro);
+  border-radius: 50%;
+}
+
+.flip-patas {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.flip-pata {
+  width: 6px;
+  height: 14px;
+  background: var(--verde-oscuro);
+  border-radius: 4px;
+}
+
+.boton-musica {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: var(--naranja);
+  color: var(--blanco);
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.boton-musica:hover {
+  transform: scale(1.1);
+  background: var(--miel);
+}
+
+.boton-musica.pausa {
+  background: var(--negro);
+}
+
 .pies {
   background: var(--negro);
   color: var(--amarillo);
-  padding: 18px;
-  font-size: 0.9rem;
+  padding: 20px;
+  font-size: 0.95rem;
 }
 
 .hexagonos {
@@ -195,11 +468,23 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  opacity: 0.06;
+  opacity: 0.05;
   background-image: url("data:image/svg+xml,%3Csvg width='60' height='52' viewBox='0 0 60 52' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15z' fill='%23000' fill-opacity='1'/%3E%3C/svg%3E");
 }
 
-@media (max-width: 400px) {
-  .nombre { font-size: 2rem; }
-  .cuerpo { padding: 24px 20px 32px; }
+@keyframes flotar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes aletear {
+  0% { transform: translateX(-50%) scaleY(1); }
+  100% { transform: translateX(-50%) scaleY(0.6); }
+}
+
+@media (max-width: 480px) {
+  .nombre { font-size: 2.2rem; }
+  .cuerpo { padding: 28px 20px 36px; }
+  .grupo-personajes { gap: 16px; }
+  .boton-musica { top: 12px; right: 12px; width: 46px; height: 46px; }
 }

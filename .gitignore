@@ -1,0 +1,7 @@
+.venv/
+.tools/
+*.webm
+*.mp4
+*.mkv
+.DS_Store
+Thumbs.db
