@@ -5,3 +5,5 @@
 *.mkv
 .DS_Store
 Thumbs.db
+deploy-temp/
+*.zip
