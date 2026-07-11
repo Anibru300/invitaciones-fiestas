@@ -21,9 +21,9 @@ invitaciones-fiestas/
 
 ## 🐝 Invitaciones disponibles
 
-| Invitación | Tema | Estado |
-|------------|------|--------|
-| [Abejita Chiquitita](invitaciones/abejita-chiquitita/) | Maya la Abeja | En progreso (datos ficticios) |
+| Invitación | Tema | Estado | Ver online |
+|------------|------|--------|------------|
+| [Abejita Chiquitita](invitaciones/abejita-chiquitita/) | Maya la Abeja | Prueba con datos ficticios | [Ver invitación](https://anibru300.github.io/invitaciones-fiestas/invitaciones/abejita-chiquitita/) |
 
 ## 🚀 Cómo usar
 
