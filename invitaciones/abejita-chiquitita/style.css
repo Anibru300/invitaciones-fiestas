@@ -152,6 +152,23 @@ body {
   filter: drop-shadow(0 8px 20px rgba(0,0,0,0.2));
 }
 
+.overlay-abejas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.overlay-abeja-voladora {
+  position: absolute;
+  font-size: 2.4rem;
+  top: var(--top);
+  left: -15%;
+  animation: volarOverlay var(--duration) linear infinite;
+  animation-delay: var(--delay);
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+}
+
 .overlay-titulo {
   font-family: 'Bangers', cursive;
   font-size: 2.6rem;
@@ -627,9 +644,9 @@ body {
 }
 
 .personaje-img {
-  height: 140px;
+  height: 180px;
   width: auto;
-  max-width: 150px;
+  max-width: 180px;
   object-fit: contain;
   filter: drop-shadow(0 6px 12px rgba(0,0,0,0.15));
   transition: transform 0.2s;
@@ -637,6 +654,29 @@ body {
 
 .personaje:hover .personaje-img {
   transform: scale(1.08);
+}
+
+/* Abejitas volando por el cuerpo de la invitación */
+.abejitas-cuerpo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.abejita-medio {
+  position: absolute;
+  top: var(--top);
+  left: -15%;
+  font-size: 1.8rem;
+  animation: volarCuerpo var(--duration) linear infinite;
+  animation-delay: var(--delay);
+  filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.15));
+  opacity: 0.9;
 }
 
 /* === PERSONAJES MEJORADOS CON CSS === */
@@ -1101,6 +1141,22 @@ body {
   50% { transform: rotate(5deg); }
 }
 
+@keyframes volarOverlay {
+  0% { left: -20%; transform: translateY(0) rotate(10deg); }
+  25% { transform: translateY(-15px) rotate(-5deg); }
+  50% { transform: translateY(10px) rotate(8deg); }
+  75% { transform: translateY(-10px) rotate(-3deg); }
+  100% { left: 120%; transform: translateY(0) rotate(10deg); }
+}
+
+@keyframes volarCuerpo {
+  0% { left: -15%; transform: translateY(0) rotate(8deg); }
+  25% { transform: translateY(-12px) rotate(-4deg); }
+  50% { transform: translateY(8px) rotate(6deg); }
+  75% { transform: translateY(-8px) rotate(-2deg); }
+  100% { left: 115%; transform: translateY(0) rotate(8deg); }
+}
+
 /* Confeti */
 .confeti {
   position: fixed;
@@ -1123,6 +1179,8 @@ body {
   .overlay-sub { font-size: 1rem; }
   .overlay-boton { padding: 16px 28px; font-size: 1.05rem; }
   .overlay-abeja { font-size: 4rem; }
+  .overlay-abeja-voladora { font-size: 1.8rem; }
+  .abejita-medio { font-size: 1.4rem; }
 
   .invitacion { padding: 16px 10px; }
   .tarjeta { border-radius: 28px; box-shadow: 0 10px 40px rgba(0,0,0,0.15), 0 0 0 6px var(--amarillo-claro), 0 0 0 12px var(--miel); }
@@ -1141,7 +1199,7 @@ body {
   .galeria-grid { gap: 8px; }
   .galeria-item { font-size: 1.8rem; }
   .grupo-personajes { gap: 24px; }
-  .personaje-img { height: 110px; max-width: 120px; }
+  .personaje-img { height: 150px; max-width: 150px; }
   .boton-confirmar { padding: 16px 24px; font-size: 1.05rem; }
   .boton-musica { width: 46px; height: 46px; font-size: 1.2rem; top: 12px; right: 12px; }
   .pasto { height: 70px; }
