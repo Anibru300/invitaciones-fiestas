@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="theme-color" content="#FFD93D" />
   <title>Primer añito de Kayli Isabella 🐝</title>
-  <link rel="stylesheet" href="style.css?v=2" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐝</text></svg>">
+  <link rel="stylesheet" href="style.css?v=3" />
 </head>
 <body>
   <!-- Overlay de bienvenida -->
@@ -18,7 +19,7 @@
       <span class="overlay-abeja-voladora" style="--delay:1.5s;--duration:4s;--top:5%"></span>
       <span class="overlay-abeja-voladora" style="--delay:2.5s;--duration:5s;--top:40%"></span>
     </div>
-    <div class="overlay-abeja"></div>
+    <img src="../../assets/images/personajes/abejita.png" alt="Abejita" class="overlay-abeja-img">
     <h1 class="overlay-titulo">Nuestra abejita chiquita está cumpliendo su primer añito</h1>
     <p class="overlay-sub">Acompáñanos a celebrar este día tan especial. Toca para abrir la invitación 🍯</p>
     <button class="overlay-boton" id="btnEntrar">
@@ -55,7 +56,7 @@
 
       <main class="cuerpo">
         <p class="titulo reveal">Estás invitado</p>
-        <h1 class="nombre reveal">Kayli Isabella</h1>
+        <h1 class="nombre reveal"><span id="nombreTypewriter">Kayli Isabella</span></h1>
         <p class="edad reveal">¡Mi primer añito! 🐝🎂</p>
 
         <div class="cuenta-regresiva reveal" id="cuentaRegresiva">
@@ -120,6 +121,32 @@
             <a class="mapa-link" href="https://maps.app.goo.gl/zQkASXxLob9xDb2n8" target="_blank" rel="noopener">
               <span>🚗</span> Cómo llegar
             </a>
+          </div>
+        </section>
+
+        <section class="itinerario reveal">
+          <h2 class="itinerario-titulo">Itinerario</h2>
+          <div class="itinerario-lista">
+            <div class="itinerario-item">
+              <span class="itinerario-hora">5:00 PM</span>
+              <span class="itinerario-actividad">Bienvenida y convivencia</span>
+            </div>
+            <div class="itinerario-item">
+              <span class="itinerario-hora">5:30 PM</span>
+              <span class="itinerario-actividad">Juegos y actividades</span>
+            </div>
+            <div class="itinerario-item">
+              <span class="itinerario-hora">6:30 PM</span>
+              <span class="itinerario-actividad">Cena</span>
+            </div>
+            <div class="itinerario-item">
+              <span class="itinerario-hora">7:30 PM</span>
+              <span class="itinerario-actividad">Piñata y sorpresas</span>
+            </div>
+            <div class="itinerario-item">
+              <span class="itinerario-hora">8:00 PM</span>
+              <span class="itinerario-actividad">Pastel y despedida</span>
+            </div>
           </div>
         </section>
 
@@ -205,9 +232,10 @@
       const abeja = document.createElement('div');
       abeja.className = 'abeja-voladora';
       abeja.style.top = (8 + Math.random() * 70) + '%';
-      abeja.style.animationDuration = (12 + Math.random() * 18) + 's';
+      abeja.style.animationDuration = (14 + Math.random() * 16) + 's';
       abeja.style.animationDelay = (Math.random() * -20) + 's';
-      abeja.style.transform = `scale(${esMovil ? 0.9 + Math.random() * 0.4 : 0.7 + Math.random() * 0.4})`;
+      const escala = esMovil ? 0.45 + Math.random() * 0.25 : 0.35 + Math.random() * 0.25;
+      abeja.style.transform = `scale(${escala})`;
       fondo.appendChild(abeja);
     }
 
@@ -252,10 +280,29 @@
       }
     }
 
+    const nombreTexto = 'Kayli Isabella';
+    const nombreElement = document.getElementById('nombreTypewriter');
+    let nombreIndex = 0;
+
+    function escribirNombre() {
+      if (!nombreElement) return;
+      nombreElement.textContent = '';
+      nombreIndex = 0;
+      function escribir() {
+        if (nombreIndex < nombreTexto.length) {
+          nombreElement.textContent += nombreTexto.charAt(nombreIndex);
+          nombreIndex++;
+          setTimeout(escribir, 130);
+        }
+      }
+      escribir();
+    }
+
     btnEntrar.addEventListener('click', () => {
       overlay.classList.add('oculto');
       iniciarMusica();
       crearConfeti();
+      escribirNombre();
     });
 
     btnMusica.addEventListener('click', () => {

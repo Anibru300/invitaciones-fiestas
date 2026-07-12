@@ -78,34 +78,14 @@ body::before {
 /* Abejas voladoras CSS */
 .abeja-voladora {
   position: absolute;
-  width: 34px;
-  height: 24px;
+  width: 52px;
+  height: 52px;
+  background-image: url('../../assets/images/personajes/abejita.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   animation: volar linear infinite;
   filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.15));
-}
-
-.abeja-voladora::before {
-  content: '';
-  position: absolute;
-  width: 22px;
-  height: 16px;
-  background: linear-gradient(180deg, var(--amarillo) 0%, var(--amarillo) 20%, var(--negro) 20%, var(--negro) 40%, var(--amarillo) 40%, var(--amarillo) 60%, var(--negro) 60%, var(--negro) 80%, var(--amarillo) 80%);
-  border-radius: 50%;
-  top: 4px;
-  left: 6px;
-}
-
-.abeja-voladora::after {
-  content: '';
-  position: absolute;
-  width: 28px;
-  height: 14px;
-  background: rgba(255, 255, 255, 0.65);
-  border-radius: 50%;
-  top: 0;
-  left: 3px;
-  z-index: -1;
-  animation: aletear 0.25s ease-in-out infinite alternate;
 }
 
 /* Nubes suaves */
@@ -169,69 +149,26 @@ body::before {
 
 .overlay-abeja-voladora {
   position: absolute;
-  width: 32px;
-  height: 22px;
+  width: 44px;
+  height: 44px;
   top: var(--top);
   left: -15%;
+  background-image: url('../../assets/images/personajes/abejita.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   animation: volarOverlay var(--duration) linear infinite;
   animation-delay: var(--delay);
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.15));
 }
 
-.overlay-abeja-voladora::before {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 14px;
-  background: linear-gradient(180deg, var(--amarillo) 0%, var(--amarillo) 22%, var(--negro) 22%, var(--negro) 42%, var(--amarillo) 42%, var(--amarillo) 62%, var(--negro) 62%, var(--negro) 82%, var(--amarillo) 82%);
-  border-radius: 50%;
-  top: 4px;
-  left: 6px;
-}
-
-.overlay-abeja-voladora::after {
-  content: '';
-  position: absolute;
-  width: 26px;
-  height: 12px;
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: 50%;
-  top: 0;
-  left: 3px;
-  z-index: -1;
-  animation: aletear 0.25s ease-in-out infinite alternate;
-}
-
-.overlay-abeja {
-  width: 110px;
-  height: 80px;
-  position: relative;
-  margin-bottom: 24px;
+.overlay-abeja-img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  margin-bottom: 18px;
   animation: flotar 3s ease-in-out infinite;
-}
-
-.overlay-abeja::before {
-  content: '';
-  position: absolute;
-  width: 74px;
-  height: 54px;
-  background: linear-gradient(180deg, var(--amarillo) 0%, var(--amarillo) 15%, var(--negro) 15%, var(--negro) 32%, var(--amarillo) 32%, var(--amarillo) 49%, var(--negro) 49%, var(--negro) 66%, var(--amarillo) 66%, var(--amarillo) 83%, var(--negro) 83%, var(--negro) 100%);
-  border-radius: 50%;
-  top: 16px;
-  left: 18px;
-  box-shadow: inset -8px -6px 0 rgba(0,0,0,0.1);
-}
-
-.overlay-abeja::after {
-  content: '';
-  position: absolute;
-  width: 90px;
-  height: 44px;
-  background: rgba(255, 255, 255, 0.72);
-  border-radius: 50%;
-  top: 0;
-  left: 10px;
-  z-index: -1;
-  animation: aletear 0.35s ease-in-out infinite alternate;
+  filter: drop-shadow(0 12px 28px rgba(0,0,0,0.18));
 }
 
 .overlay-titulo {
@@ -424,6 +361,19 @@ body::before {
   color: var(--negro);
   margin-bottom: 6px;
   line-height: 1;
+  min-height: 1.1em;
+}
+
+#nombreTypewriter::after {
+  content: '|';
+  color: var(--dorado);
+  margin-left: 2px;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 .edad {
@@ -627,6 +577,61 @@ body::before {
   box-shadow: 0 8px 24px rgba(0,0,0,0.22);
 }
 
+/* Itinerario */
+.itinerario {
+  margin: 32px 0;
+  text-align: left;
+}
+
+.itinerario-titulo {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.8rem;
+  color: var(--miel-oscura);
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.itinerario-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.itinerario-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--blanco);
+  border-radius: 20px;
+  padding: 16px 18px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+  border: 1px solid rgba(255, 184, 0, 0.18);
+  transition: transform 0.2s;
+}
+
+.itinerario-item:hover {
+  transform: translateX(4px);
+}
+
+.itinerario-hora {
+  background: linear-gradient(135deg, var(--amarillo) 0%, var(--dorado) 100%);
+  color: var(--negro);
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 9px 12px;
+  border-radius: 14px;
+  white-space: nowrap;
+  min-width: 72px;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(255, 184, 0, 0.25);
+}
+
+.itinerario-actividad {
+  color: var(--gris);
+  font-size: 0.98rem;
+  font-weight: 500;
+}
+
 /* Mensaje */
 .mensaje {
   margin: 32px 0;
@@ -728,35 +733,15 @@ body::before {
   position: absolute;
   top: var(--top);
   left: -15%;
-  width: 30px;
-  height: 22px;
+  width: 42px;
+  height: 42px;
+  background-image: url('../../assets/images/personajes/abejita.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   animation: volarCuerpo var(--duration) linear infinite;
   animation-delay: var(--delay);
-  opacity: 0.85;
-}
-
-.abejita-medio::before {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 14px;
-  background: linear-gradient(180deg, var(--amarillo) 0%, var(--amarillo) 22%, var(--negro) 22%, var(--negro) 42%, var(--amarillo) 42%, var(--amarillo) 62%, var(--negro) 62%, var(--negro) 82%, var(--amarillo) 82%);
-  border-radius: 50%;
-  top: 4px;
-  left: 5px;
-}
-
-.abejita-medio::after {
-  content: '';
-  position: absolute;
-  width: 26px;
-  height: 12px;
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: 50%;
-  top: 0;
-  left: 2px;
-  z-index: -1;
-  animation: aletear 0.25s ease-in-out infinite alternate;
+  opacity: 0.5;
 }
 
 /* Personajes */
@@ -953,9 +938,7 @@ body::before {
   .overlay { padding: 20px; }
   .overlay-sub { font-size: 1rem; max-width: 300px; }
   .overlay-boton { padding: 18px 32px; font-size: 1.05rem; }
-  .overlay-abeja { width: 90px; height: 66px; }
-  .overlay-abeja::before { width: 60px; height: 44px; top: 14px; left: 15px; }
-  .overlay-abeja::after { width: 74px; height: 36px; top: 0; left: 8px; }
+  .overlay-abeja-img { width: 110px; height: 110px; }
 
   .invitacion { padding: 14px 10px 34px; }
   .tarjeta { border-radius: 34px; }
@@ -971,6 +954,10 @@ body::before {
   .info-icono { width: 46px; height: 46px; font-size: 1.4rem; }
   .info-texto { font-size: 0.92rem; }
   .mapa-contenedor { height: 210px; }
+  .itinerario-titulo { font-size: 1.55rem; }
+  .itinerario-item { padding: 14px 16px; gap: 12px; }
+  .itinerario-hora { font-size: 0.78rem; min-width: 66px; padding: 8px 10px; }
+  .itinerario-actividad { font-size: 0.92rem; }
   .mensaje { font-size: 1.15rem; padding: 22px; }
   .boton-confirmar { padding: 18px 28px; font-size: 1rem; }
   .boton-compartir { padding: 16px 28px; font-size: 1rem; }
