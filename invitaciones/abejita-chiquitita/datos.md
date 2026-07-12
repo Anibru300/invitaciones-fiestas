@@ -3,6 +3,7 @@
 | Campo | Valor actual |
 |-------|--------------|
 | **Nombre del festejado/a** | Kayli Isabella |
+| **Foto actual** | Imagen de la abejita (placeholder hasta tener foto real) |
 | **Edad que cumple** | 1 año |
 | **Fecha** | Domingo 26 de julio de 2026 |
 | **Hora** | 5:00 PM |
