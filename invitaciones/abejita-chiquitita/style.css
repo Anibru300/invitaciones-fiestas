@@ -204,6 +204,61 @@ body {
   animation: bounceSutil 2.2s ease-in-out infinite;
 }
 
+/* Personajes adicionales */
+.personaje-extra {
+  position: absolute;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.15));
+  z-index: 6;
+  animation: flotarPersonaje 3.5s ease-in-out infinite;
+}
+
+.payaso-slide {
+  width: clamp(90px, 22vw, 150px);
+  height: clamp(90px, 22vw, 150px);
+  bottom: 6%;
+  left: 3%;
+  animation-delay: 0.5s;
+}
+
+/* Flores bailarinas */
+.flor-bailarina {
+  position: absolute;
+  font-size: clamp(2.2rem, 6vw, 3.5rem);
+  z-index: 7;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.12));
+  animation: bailarFlor 2.8s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.flor-bailarina:nth-child(2n) { animation-delay: 0.4s; }
+.flor-bailarina:nth-child(3n) { animation-delay: 0.8s; }
+
+/* Esquina de página doblada (page curl decorativo) */
+.esquina-pagina {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  z-index: 15;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,0.4) 50%, rgba(0,0,0,0.08) 50%);
+  border-radius: 0 0 0 18px;
+  box-shadow: -3px -3px 8px rgba(0,0,0,0.08);
+}
+
+.esquina-pagina::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 26px;
+  height: 26px;
+  background: linear-gradient(135deg, var(--blanco) 50%, transparent 50%);
+  border-radius: 0 0 0 12px;
+}
+
 /* Dots de navegación */
 .slide-dots {
   position: fixed;
@@ -1111,6 +1166,18 @@ body {
 @keyframes bounceSutil {
   0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.7; }
   50% { transform: translateX(-50%) translateY(-6px); opacity: 1; }
+}
+
+@keyframes flotarPersonaje {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-10px) rotate(3deg); }
+}
+
+@keyframes bailarFlor {
+  0%, 100% { transform: rotate(-8deg) scale(1); }
+  25% { transform: rotate(6deg) scale(1.08); }
+  50% { transform: rotate(-4deg) scale(1); }
+  75% { transform: rotate(8deg) scale(1.05); }
 }
 
 /* Responsive */
