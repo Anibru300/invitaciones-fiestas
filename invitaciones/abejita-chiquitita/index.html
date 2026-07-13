@@ -6,9 +6,25 @@
   <meta name="theme-color" content="#FFB6C1" />
   <title>Primer añito de Kayli Isabella 🐝</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐝</text></svg>">
-  <link rel="stylesheet" href="style.css?v=8" />
+  <link rel="stylesheet" href="style.css?v=9" />
 </head>
 <body>
+  <!-- Partículas flotantes de polen/miel -->
+  <div class="particulas" aria-hidden="true">
+    <span class="particula" style="left:5%; animation-duration:9s; animation-delay:0s"></span>
+    <span class="particula" style="left:12%; animation-duration:12s; animation-delay:1s"></span>
+    <span class="particula" style="left:20%; animation-duration:10s; animation-delay:3s"></span>
+    <span class="particula" style="left:28%; animation-duration:14s; animation-delay:0.5s"></span>
+    <span class="particula" style="left:35%; animation-duration:11s; animation-delay:2s"></span>
+    <span class="particula" style="left:45%; animation-duration:13s; animation-delay:4s"></span>
+    <span class="particula" style="left:55%; animation-duration:9s; animation-delay:1.5s"></span>
+    <span class="particula" style="left:62%; animation-duration:12s; animation-delay:2.5s"></span>
+    <span class="particula" style="left:70%; animation-duration:10s; animation-delay:0.2s"></span>
+    <span class="particula" style="left:78%; animation-duration:15s; animation-delay:3.5s"></span>
+    <span class="particula" style="left:85%; animation-duration:11s; animation-delay:1.2s"></span>
+    <span class="particula" style="left:92%; animation-duration:13s; animation-delay:2.8s"></span>
+  </div>
+
   <!-- Overlay de bienvenida -->
   <div class="overlay" id="overlay">
     <img src="../../assets/images/personajes/abejita.png" alt="Abejita" class="overlay-abeja-img">
@@ -42,7 +58,7 @@
   <!-- Contenedor de slides -->
   <main class="slides-container" id="slidesContainer">
     <!-- Slide 1: Bienvenida -->
-    <section class="slide slide-bienvenida" data-slide="0">
+    <section class="slide slide-bienvenida active" data-slide="0">
       <div class="cielo"></div>
       <div class="sol"></div>
       <div class="nube nube1"></div>
@@ -63,7 +79,7 @@
         <span class="flor-suelo" style="left:75%">🌸</span>
         <span class="flor-suelo" style="left:88%">🌼</span>
       </div>
-      <img src="../../assets/images/personajes/abejita.png" alt="Abejita" class="abeja-slide abeja-bienvenida">
+      <img src="../../assets/images/personajes/abejita.png" alt="Abejita" class="abeja-slide abeja-bienvenida animar">
       <div class="miel-drips">
         <div class="miel-drip" style="left:8%; animation-delay:0s"></div>
         <div class="miel-drip" style="left:22%; animation-delay:0.5s"></div>
@@ -73,9 +89,9 @@
         <div class="miel-drip" style="left:88%; animation-delay:0.3s"></div>
       </div>
       <div class="slide-content">
-        <h2 class="titulo-hola">¡Hola!</h2>
-        <p class="texto-bienvenida">Acompáñanos a festejar</p>
-        <p class="texto-bienvenida">a nuestra dulce abejita 🐝</p>
+        <h2 class="titulo-hola animar">¡Hola!</h2>
+        <p class="texto-bienvenida animar animar-1">Acompáñanos a festejar</p>
+        <p class="texto-bienvenida animar animar-2">a nuestra dulce abejita 🐝</p>
       </div>
       <div class="scroll-hint">
         <span>Desliza hacia arriba</span>
@@ -91,10 +107,10 @@
       <div class="nube nube-rosa2"></div>
       <div class="panal-esquina panal-top-left"></div>
       <div class="panal-esquina panal-top-right"></div>
-      <img src="../../assets/images/personajes/abejita.png" alt="Abejita" class="abeja-slide abeja-nombre">
+      <img src="../../assets/images/personajes/abejita.png" alt="Abejita" class="abeja-slide abeja-nombre animar">
       <div class="slide-content">
-        <h1 class="nombre-3d">Kayli Isabella</h1>
-        <p class="cumple-texto">cumple <span class="numero-edad">1</span></p>
+        <h1 class="nombre-3d animar">Kayli Isabella</h1>
+        <p class="cumple-texto animar animar-1">cumple <span class="numero-edad">1</span></p>
       </div>
       <div class="flores-blancas">
         <span class="margarita" style="left:-5%; bottom:-20px; font-size:5rem">🌼</span>
@@ -113,11 +129,11 @@
       <div class="flor-media flor-med-izq">🌼</div>
       <div class="flor-media flor-med-der">🌷</div>
       <div class="hojas"></div>
-      <img src="../../assets/images/personajes/abejita.png" alt="Abejita" class="abeja-slide abeja-datos">
+      <img src="../../assets/images/personajes/abejita.png" alt="Abejita" class="abeja-slide abeja-datos animar">
       <div class="mariposa mariposa1">🦋</div>
       <div class="mariposa mariposa2">🦋</div>
       <div class="slide-content">
-        <div class="cuenta-regresiva" id="cuentaRegresiva">
+        <div class="cuenta-regresiva animar" id="cuentaRegresiva">
           <p class="cuenta-titulo">Faltan para la fiesta</p>
           <div class="cuenta-items">
             <div class="cuenta-item"><span class="cuenta-numero" id="dias">00</span><span class="cuenta-label">Días</span></div>
@@ -126,10 +142,10 @@
             <div class="cuenta-item"><span class="cuenta-numero" id="segundos">00</span><span class="cuenta-label">Seg</span></div>
           </div>
         </div>
-        <div class="datos-evento">
-          <p class="dato-linea fecha-linea">📅 Domingo 26 de julio de 2026</p>
-          <p class="dato-linea hora-linea">🕔 5:00 PM</p>
-          <p class="dato-linea lugar-linea">📍 Quinta Hidalgo</p>
+        <div class="datos-evento animar animar-1">
+          <p class="dato-linea fecha-linea animar animar-2">📅 Domingo 26 de julio de 2026</p>
+          <p class="dato-linea hora-linea animar animar-3">🕔 5:00 PM</p>
+          <p class="dato-linea lugar-linea animar animar-4">📍 Quinta Hidalgo</p>
         </div>
       </div>
     </section>
@@ -143,9 +159,9 @@
       <div class="globo globo4">🎈</div>
       <div class="globo globo5">🎈</div>
       <div class="sol-brillo"></div>
-      <img src="../../assets/images/personajes/abejita.png" alt="Abejita" class="abeja-slide abeja-info">
+      <img src="../../assets/images/personajes/abejita.png" alt="Abejita" class="abeja-slide abeja-info animar">
       <div class="slide-content">
-        <div class="info-card mapa-card">
+        <div class="info-card mapa-card animar">
           <h3 class="info-titulo">🗺️ Ubicación</h3>
           <div class="mapa-placeholder">
             <span class="mapa-pin">📍</span>
@@ -155,7 +171,7 @@
             Cómo llegar
           </a>
         </div>
-        <div class="info-card regalo-card">
+        <div class="info-card regalo-card animar animar-1">
           <h3 class="info-titulo">🎁 Regalo</h3>
           <p>Su presencia es el mejor regalo.</p>
           <p>Si deseas obsequiarme algo:</p>
@@ -180,15 +196,15 @@
         <span class="fuego" style="left:70%; top:35%">✨</span>
         <span class="fuego" style="left:20%; top:40%">✨</span>
       </div>
-      <img src="../../assets/images/personajes/abejita.png" alt="Abejita" class="abeja-slide abeja-despedida">
+      <img src="../../assets/images/personajes/abejita.png" alt="Abejita" class="abeja-slide abeja-despedida animar">
       <div class="slide-content">
-        <h2 class="no-faltes">¡No faltes!</h2>
-        <p class="diversion">Nos vamos a divertir</p>
-        <p class="frase-final">Los mejores momentos se comparten. ¡Te esperamos! 🎉</p>
-        <a class="boton-confirmar" href="https://wa.me/5216311912233?text=¡Hola!%20Confirmo%20mi%20asistencia%20al%20primer%20añito%20de%20Kayli%20Isabella%20🐝" target="_blank" rel="noopener">
+        <h2 class="no-faltes animar">¡No faltes!</h2>
+        <p class="diversion animar animar-1">Nos vamos a divertir</p>
+        <p class="frase-final animar animar-2">Los mejores momentos se comparten. ¡Te esperamos! 🎉</p>
+        <a class="boton-confirmar animar animar-3" href="https://wa.me/5216311912233?text=¡Hola!%20Confirmo%20mi%20asistencia%20al%20primer%20añito%20de%20Kayli%20Isabella%20🐝" target="_blank" rel="noopener">
           <span>💬</span> Confirmar asistencia
         </a>
-        <button class="boton-compartir" id="btnCompartir" type="button">
+        <button class="boton-compartir animar animar-4" id="btnCompartir" type="button">
           <span>🔗</span> Compartir invitación
         </button>
       </div>
@@ -307,13 +323,21 @@
     // Detectar slide visible con IntersectionObserver
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
+        const slide = entry.target;
+        const index = parseInt(slide.dataset.slide);
         if (entry.isIntersecting) {
-          const index = parseInt(entry.target.dataset.slide);
           currentSlide = index;
           updateDots();
+          slide.classList.add('active');
+          // Activar animaciones internas
+          slide.querySelectorAll('.animar').forEach(el => el.classList.add('visible'));
+        } else {
+          slide.classList.remove('active');
+          // Opcional: reiniciar animaciones al salir para que se reproduzcan al volver
+          slide.querySelectorAll('.animar').forEach(el => el.classList.remove('visible'));
         }
       });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.25 });
 
     slides.forEach(slide => observer.observe(slide));
 

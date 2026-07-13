@@ -138,6 +138,72 @@ body {
   transform: scale(1.1);
 }
 
+/* Partículas flotantes */
+.particulas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  overflow: hidden;
+}
+
+.particula {
+  position: absolute;
+  bottom: -20px;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, var(--amarillo) 0%, var(--dorado) 100%);
+  border-radius: 50%;
+  opacity: 0.6;
+  box-shadow: 0 0 8px rgba(255, 217, 61, 0.6);
+  animation: flotarParticula 10s linear infinite;
+}
+
+.particula:nth-child(3n) {
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, var(--rosa-claro) 0%, var(--rosa-fuerte) 100%);
+  box-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
+}
+
+.particula:nth-child(5n) {
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle, var(--blanco) 0%, var(--azul-cielo) 100%);
+  box-shadow: 0 0 10px rgba(179, 229, 252, 0.6);
+}
+
+/* Animaciones de entrada */
+.animar {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.slide:not(.active) .animar {
+  opacity: 0;
+  transform: translateY(30px) scale(0.96);
+}
+
+.slide.active .animar,
+.slide-content .animar.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.animar-1 { transition-delay: 0.1s; }
+.animar-2 { transition-delay: 0.2s; }
+.animar-3 { transition-delay: 0.3s; }
+.animar-4 { transition-delay: 0.4s; }
+.animar-5 { transition-delay: 0.5s; }
+
+/* Abeja con vuelo más natural */
+/* Scroll hint más suave */
+.scroll-hint {
+  animation: bounceSutil 2.2s ease-in-out infinite;
+}
+
 /* Dots de navegación */
 .slide-dots {
   position: fixed;
@@ -343,7 +409,7 @@ body {
   height: clamp(140px, 38vw, 220px);
   left: -20px;
   bottom: 18%;
-  animation: entradaAbeja 1.5s ease-out forwards, flotar 3s ease-in-out 1.5s infinite;
+  animation: entradaAbeja 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards, volarSuave 5s ease-in-out 1.2s infinite;
 }
 
 .titulo-hola {
@@ -468,7 +534,7 @@ body {
   height: clamp(150px, 42vw, 260px);
   top: 18%;
   left: 50%;
-  animation: flotarCentrado 3s ease-in-out infinite;
+  animation: aparecerAbeja 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards, flotarCentrado 3s ease-in-out 0.8s infinite;
 }
 
 .nombre-3d {
@@ -584,7 +650,7 @@ body {
   height: clamp(100px, 28vw, 180px);
   top: 10%;
   right: 2%;
-  animation: volarPeque 4s ease-in-out infinite;
+  animation: aparecerAbeja 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards, volarPeque 4s ease-in-out 0.8s infinite;
 }
 
 .mariposa {
@@ -717,7 +783,7 @@ body {
   height: clamp(80px, 20vw, 140px);
   top: 12%;
   left: 2%;
-  animation: flotar 3s ease-in-out infinite;
+  animation: aparecerAbeja 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards, flotar 3s ease-in-out 0.8s infinite;
 }
 
 .info-card {
@@ -815,7 +881,7 @@ body {
   height: clamp(100px, 26vw, 160px);
   bottom: 6%;
   right: 2%;
-  animation: flotar 3s ease-in-out infinite;
+  animation: aparecerAbeja 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards, flotar 3s ease-in-out 0.8s infinite;
 }
 
 .no-faltes {
@@ -1019,6 +1085,32 @@ body {
 @keyframes caerConfeti {
   0% { transform: translateY(0) rotate(0deg); opacity: 1; }
   100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes flotarParticula {
+  0% { transform: translateY(0) translateX(0) scale(0.8); opacity: 0; }
+  10% { opacity: 0.7; }
+  25% { transform: translateY(-25vh) translateX(15px) scale(1); }
+  50% { transform: translateY(-50vh) translateX(-10px) scale(0.9); }
+  75% { transform: translateY(-75vh) translateX(12px) scale(1); opacity: 0.6; }
+  100% { transform: translateY(-110vh) translateX(-5px) scale(0.8); opacity: 0; }
+}
+
+@keyframes volarSuave {
+  0%, 100% { transform: translateY(0) rotate(0deg) translateX(0); }
+  25% { transform: translateY(-10px) rotate(-3deg) translateX(8px); }
+  50% { transform: translateY(-6px) rotate(2deg) translateX(-6px); }
+  75% { transform: translateY(-12px) rotate(-2deg) translateX(5px); }
+}
+
+@keyframes aparecerAbeja {
+  0% { opacity: 0; transform: scale(0.7) translateY(20px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes bounceSutil {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.7; }
+  50% { transform: translateX(-50%) translateY(-6px); opacity: 1; }
 }
 
 /* Responsive */
