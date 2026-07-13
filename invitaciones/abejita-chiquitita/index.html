@@ -3,32 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="theme-color" content="#FFD93D" />
+  <meta name="theme-color" content="#FFB6C1" />
   <title>Primer añito de Kayli Isabella 🐝</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐝</text></svg>">
-  <link rel="stylesheet" href="style.css?v=3" />
+  <link rel="stylesheet" href="style.css?v=8" />
 </head>
 <body>
   <!-- Overlay de bienvenida -->
   <div class="overlay" id="overlay">
-    <div class="overlay-abejas">
-      <span class="overlay-abeja-voladora" style="--delay:0s;--duration:4s;--top:10%"></span>
-      <span class="overlay-abeja-voladora" style="--delay:1s;--duration:5s;--top:25%"></span>
-      <span class="overlay-abeja-voladora" style="--delay:2s;--duration:4.5s;--top:15%"></span>
-      <span class="overlay-abeja-voladora" style="--delay:0.5s;--duration:5.5s;--top:35%"></span>
-      <span class="overlay-abeja-voladora" style="--delay:1.5s;--duration:4s;--top:5%"></span>
-      <span class="overlay-abeja-voladora" style="--delay:2.5s;--duration:5s;--top:40%"></span>
-    </div>
     <img src="../../assets/images/personajes/abejita.png" alt="Abejita" class="overlay-abeja-img">
-    <h1 class="overlay-titulo">Nuestra abejita chiquita está cumpliendo su primer añito</h1>
-    <p class="overlay-sub">Acompáñanos a celebrar este día tan especial. Toca para abrir la invitación 🍯</p>
+    <h1 class="overlay-titulo">Nuestra abejita chiquita<br>está cumpliendo su primer añito</h1>
+    <p class="overlay-sub">Toca para abrir la invitación</p>
     <button class="overlay-boton" id="btnEntrar">
       <span>🎵</span> Abrir invitación
     </button>
   </div>
-
-  <!-- Fondo animado -->
-  <div class="fondo" id="fondo"></div>
 
   <!-- Música de fondo -->
   <audio id="musica" loop>
@@ -41,207 +30,172 @@
     🔇
   </button>
 
-  <article class="invitacion">
-    <div class="tarjeta">
-      <header class="cabeza">
-        <div class="corona">👑</div>
-        <div class="foto-contenedor">
-          <div class="foto-marco"></div>
-          <div class="foto">
-            <!-- Mientras llega la foto real de Kayli Isabella -->
-            <img src="../../assets/images/personajes/abejita.png" alt="Abejita - temática de la fiesta">
-          </div>
-        </div>
-      </header>
+  <!-- Indicadores de slide -->
+  <nav class="slide-dots" id="slideDots" aria-label="Navegación de escenas">
+    <button data-slide="0" class="active" aria-label="Escena 1"></button>
+    <button data-slide="1" aria-label="Escena 2"></button>
+    <button data-slide="2" aria-label="Escena 3"></button>
+    <button data-slide="3" aria-label="Escena 4"></button>
+    <button data-slide="4" aria-label="Escena 5"></button>
+  </nav>
 
-      <main class="cuerpo">
-        <p class="titulo reveal">Estás invitado</p>
-        <h1 class="nombre reveal"><span id="nombreTypewriter">Kayli Isabella</span></h1>
-        <p class="edad reveal">¡Mi primer añito! 🐝🎂</p>
+  <!-- Contenedor de slides -->
+  <main class="slides-container" id="slidesContainer">
+    <!-- Slide 1: Bienvenida -->
+    <section class="slide slide-bienvenida" data-slide="0">
+      <div class="cielo"></div>
+      <div class="sol"></div>
+      <div class="nube nube1"></div>
+      <div class="nube nube2"></div>
+      <div class="nube nube3"></div>
+      <div class="montanas"></div>
+      <div class="colina colina-verde"></div>
+      <div class="colina colina-clara"></div>
+      <div class="arbol arbol1"></div>
+      <div class="arbol arbol2"></div>
+      <div class="flores-suelo">
+        <span class="flor-suelo" style="left:5%">🌸</span>
+        <span class="flor-suelo" style="left:15%">🌼</span>
+        <span class="flor-suelo" style="left:25%">🌷</span>
+        <span class="flor-suelo" style="left:35%">🌸</span>
+        <span class="flor-suelo" style="left:50%">🌼</span>
+        <span class="flor-suelo" style="left:65%">🌷</span>
+        <span class="flor-suelo" style="left:75%">🌸</span>
+        <span class="flor-suelo" style="left:88%">🌼</span>
+      </div>
+      <img src="../../assets/images/personajes/abejita.png" alt="Abejita" class="abeja-slide abeja-bienvenida">
+      <div class="miel-drips">
+        <div class="miel-drip" style="left:8%; animation-delay:0s"></div>
+        <div class="miel-drip" style="left:22%; animation-delay:0.5s"></div>
+        <div class="miel-drip" style="left:38%; animation-delay:1.2s"></div>
+        <div class="miel-drip" style="left:55%; animation-delay:0.8s"></div>
+        <div class="miel-drip" style="left:72%; animation-delay:1.5s"></div>
+        <div class="miel-drip" style="left:88%; animation-delay:0.3s"></div>
+      </div>
+      <div class="slide-content">
+        <h2 class="titulo-hola">¡Hola!</h2>
+        <p class="texto-bienvenida">Acompáñanos a festejar</p>
+        <p class="texto-bienvenida">a nuestra dulce abejita 🐝</p>
+      </div>
+      <div class="scroll-hint">
+        <span>Desliza hacia arriba</span>
+        <span class="scroll-flecha">↑</span>
+      </div>
+    </section>
 
-        <div class="cuenta-regresiva reveal" id="cuentaRegresiva">
+    <!-- Slide 2: Nombre y edad -->
+    <section class="slide slide-nombre" data-slide="1">
+      <div class="panal-fondo"></div>
+      <div class="arcoiris"></div>
+      <div class="nube nube-rosa1"></div>
+      <div class="nube nube-rosa2"></div>
+      <div class="panal-esquina panal-top-left"></div>
+      <div class="panal-esquina panal-top-right"></div>
+      <img src="../../assets/images/personajes/abejita.png" alt="Abejita" class="abeja-slide abeja-nombre">
+      <div class="slide-content">
+        <h1 class="nombre-3d">Kayli Isabella</h1>
+        <p class="cumple-texto">cumple <span class="numero-edad">1</span></p>
+      </div>
+      <div class="flores-blancas">
+        <span class="margarita" style="left:-5%; bottom:-20px; font-size:5rem">🌼</span>
+        <span class="margarita" style="left:15%; bottom:-30px; font-size:6rem">🌼</span>
+        <span class="margarita" style="left:40%; bottom:-15px; font-size:5.5rem">🌼</span>
+        <span class="margarita" style="left:65%; bottom:-25px; font-size:6.5rem">🌼</span>
+        <span class="margarita" style="left:85%; bottom:-20px; font-size:5rem">🌼</span>
+      </div>
+    </section>
+
+    <!-- Slide 3: Fecha, hora y lugar -->
+    <section class="slide slide-datos" data-slide="2">
+      <div class="cielo-jardin"></div>
+      <div class="flor-grande flor-izq">🌷</div>
+      <div class="flor-grande flor-der">🌸</div>
+      <div class="flor-media flor-med-izq">🌼</div>
+      <div class="flor-media flor-med-der">🌷</div>
+      <div class="hojas"></div>
+      <img src="../../assets/images/personajes/abejita.png" alt="Abejita" class="abeja-slide abeja-datos">
+      <div class="mariposa mariposa1">🦋</div>
+      <div class="mariposa mariposa2">🦋</div>
+      <div class="slide-content">
+        <div class="cuenta-regresiva" id="cuentaRegresiva">
           <p class="cuenta-titulo">Faltan para la fiesta</p>
-          <div class="cuenta-items" id="cuentaItems">
+          <div class="cuenta-items">
             <div class="cuenta-item"><span class="cuenta-numero" id="dias">00</span><span class="cuenta-label">Días</span></div>
             <div class="cuenta-item"><span class="cuenta-numero" id="horas">00</span><span class="cuenta-label">Horas</span></div>
             <div class="cuenta-item"><span class="cuenta-numero" id="minutos">00</span><span class="cuenta-label">Min</span></div>
             <div class="cuenta-item"><span class="cuenta-numero" id="segundos">00</span><span class="cuenta-label">Seg</span></div>
           </div>
         </div>
-
-        <div class="info-grid">
-          <div class="info-card reveal">
-            <div class="info-icono">📅</div>
-            <div class="info-texto">
-              <strong>Fecha</strong>
-              Domingo 26 de julio de 2026
-            </div>
-          </div>
-
-          <div class="info-card reveal">
-            <div class="info-icono">🕔</div>
-            <div class="info-texto">
-              <strong>Hora</strong>
-              5:00 PM
-            </div>
-          </div>
-
-          <div class="info-card reveal">
-            <div class="info-icono">📍</div>
-            <div class="info-texto">
-              <strong>Lugar</strong>
-              Quinta Hidalgo
-            </div>
-          </div>
-
-          <div class="info-card reveal info-card-regalo info-card-regalo-completo">
-            <div class="info-icono">🎁</div>
-            <div class="info-texto">
-              <strong>Regalo</strong>
-              <p>Su presencia es el mejor regalo pero si deseas obsequiarme algo puede ser de la siguiente forma:</p>
-              <p class="regalo-modo">👕 ✉️</p>
-              <p>Talla 18 meses</p>
-              <p class="regalo-frase">Los mejores momentos de la vida merecen ser compartidos.<br>¡Te esperamos!!</p>
-            </div>
-          </div>
+        <div class="datos-evento">
+          <p class="dato-linea fecha-linea">📅 Domingo 26 de julio de 2026</p>
+          <p class="dato-linea hora-linea">🕔 5:00 PM</p>
+          <p class="dato-linea lugar-linea">📍 Quinta Hidalgo</p>
         </div>
+      </div>
+    </section>
 
-        <section class="ubicacion reveal">
-          <h2 class="ubicacion-titulo">Ubicación</h2>
-          <div class="mapa-contenedor">
-            <iframe
-              src="https://www.openstreetmap.org/export/embed.html?bbox=-110.956%2C31.279%2C-110.944%2C31.285&layer=mapnik&marker=31.2820375%2C-110.9501186"
-              width="100%"
-              height="100%"
-              style="border:0;"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Ubicación de Quinta Hidalgo"
-            ></iframe>
+    <!-- Slide 4: Ubicación y regalo -->
+    <section class="slide slide-info" data-slide="3">
+      <div class="degradado-fondo"></div>
+      <div class="globo globo1">🎈</div>
+      <div class="globo globo2">🎈</div>
+      <div class="globo globo3">🎈</div>
+      <div class="globo globo4">🎈</div>
+      <div class="globo globo5">🎈</div>
+      <div class="sol-brillo"></div>
+      <img src="../../assets/images/personajes/abejita.png" alt="Abejita" class="abeja-slide abeja-info">
+      <div class="slide-content">
+        <div class="info-card mapa-card">
+          <h3 class="info-titulo">🗺️ Ubicación</h3>
+          <div class="mapa-placeholder">
+            <span class="mapa-pin">📍</span>
+            <p class="mapa-lugar">Quinta Hidalgo</p>
           </div>
-          <div style="text-align: center;">
-            <a class="mapa-link" href="https://maps.app.goo.gl/zQkASXxLob9xDb2n8" target="_blank" rel="noopener">
-              <span>🚗</span> Cómo llegar
-            </a>
-          </div>
-        </section>
+          <a class="boton-mapa" href="https://maps.app.goo.gl/zQkASXxLob9xDb2n8" target="_blank" rel="noopener">
+            Cómo llegar
+          </a>
+        </div>
+        <div class="info-card regalo-card">
+          <h3 class="info-titulo">🎁 Regalo</h3>
+          <p>Su presencia es el mejor regalo.</p>
+          <p>Si deseas obsequiarme algo:</p>
+          <p class="regalo-modo">👕 ✉️</p>
+          <p>Talla 18 meses</p>
+        </div>
+      </div>
+    </section>
 
-        <section class="itinerario reveal">
-          <h2 class="itinerario-titulo">Itinerario</h2>
-          <div class="itinerario-lista">
-            <div class="itinerario-item">
-              <span class="itinerario-hora">5:00 PM</span>
-              <span class="itinerario-actividad">Bienvenida y convivencia</span>
-            </div>
-            <div class="itinerario-item">
-              <span class="itinerario-hora">5:30 PM</span>
-              <span class="itinerario-actividad">Juegos y actividades</span>
-            </div>
-            <div class="itinerario-item">
-              <span class="itinerario-hora">6:30 PM</span>
-              <span class="itinerario-actividad">Cena</span>
-            </div>
-            <div class="itinerario-item">
-              <span class="itinerario-hora">7:30 PM</span>
-              <span class="itinerario-actividad">Piñata y sorpresas</span>
-            </div>
-            <div class="itinerario-item">
-              <span class="itinerario-hora">8:00 PM</span>
-              <span class="itinerario-actividad">Pastel y despedida</span>
-            </div>
-          </div>
-        </section>
-
-        <p class="mensaje reveal">
-          ¡No faltes! Será un día lleno de miel 🍯, dulces 🍬 y mucha diversión.
-        </p>
-
-        <a class="boton-confirmar reveal" href="https://wa.me/5216311912233?text=¡Hola!%20Confirmo%20mi%20asistencia%20al%20primer%20añito%20de%20Kayli%20Isabella%20🐝" target="_blank" rel="noopener">
-          <span>💬</span> Confirmar por WhatsApp
+    <!-- Slide 5: Despedida -->
+    <section class="slide slide-despedida" data-slide="4">
+      <div class="degradado-fondo"></div>
+      <div class="globo globo1">🎈</div>
+      <div class="globo globo2">🎈</div>
+      <div class="globo globo3">🎈</div>
+      <div class="globo globo4">🎈</div>
+      <div class="globo globo5">🎈</div>
+      <div class="globo globo6">🎈</div>
+      <div class="fuegos">
+        <span class="fuego" style="left:10%; top:20%">✨</span>
+        <span class="fuego" style="left:85%; top:15%">✨</span>
+        <span class="fuego" style="left:70%; top:35%">✨</span>
+        <span class="fuego" style="left:20%; top:40%">✨</span>
+      </div>
+      <img src="../../assets/images/personajes/abejita.png" alt="Abejita" class="abeja-slide abeja-despedida">
+      <div class="slide-content">
+        <h2 class="no-faltes">¡No faltes!</h2>
+        <p class="diversion">Nos vamos a divertir</p>
+        <p class="frase-final">Los mejores momentos se comparten. ¡Te esperamos! 🎉</p>
+        <a class="boton-confirmar" href="https://wa.me/5216311912233?text=¡Hola!%20Confirmo%20mi%20asistencia%20al%20primer%20añito%20de%20Kayli%20Isabella%20🐝" target="_blank" rel="noopener">
+          <span>💬</span> Confirmar asistencia
         </a>
-
-        <button class="boton-compartir reveal" id="btnCompartir" type="button">
+        <button class="boton-compartir" id="btnCompartir" type="button">
           <span>🔗</span> Compartir invitación
         </button>
-
-        <!-- Abejitas volando por el medio de la invitación -->
-        <div class="abejitas-cuerpo">
-          <span class="abejita-medio" style="--delay:0s;--duration:6s;--top:5%"></span>
-          <span class="abejita-medio" style="--delay:1s;--duration:7s;--top:35%"></span>
-          <span class="abejita-medio" style="--delay:2s;--duration:5.5s;--top:65%"></span>
-          <span class="abejita-medio" style="--delay:0.5s;--duration:6.5s;--top:85%"></span>
-          <span class="abejita-medio" style="--delay:1.5s;--duration:5s;--top:50%"></span>
-        </div>
-
-        <section class="personajes reveal">
-          <p class="personajes-titulo">¡Nos acompañan!</p>
-          <div class="grupo-personajes">
-            <div class="personaje">
-              <img src="../../assets/images/personajes/abejita.png" alt="Abejita" class="personaje-img">
-              <span class="personaje-nombre">Abejita</span>
-            </div>
-
-            <div class="personaje">
-              <img src="../../assets/images/personajes/payasito.png" alt="Payasito" class="personaje-img">
-              <span class="personaje-nombre">Payasito</span>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer class="pies">
-        🐝 Temática: La abejita Chiquitita 🐝
-      </footer>
-    </div>
-  </article>
+      </div>
+    </section>
+  </main>
 
   <script>
-    // Generar elementos decorativos de fondo
-    const fondo = document.getElementById('fondo');
-
-    // Nubes
-    const nubes = [
-      { clase: 'nube1' },
-      { clase: 'nube2' },
-      { clase: 'nube3' }
-    ];
-    nubes.forEach(n => {
-      const div = document.createElement('div');
-      div.className = 'nube ' + n.clase;
-      fondo.appendChild(div);
-    });
-
-    const esMovil = window.innerWidth <= 480;
-
-    // Polen dorado
-    const cantidadPolen = esMovil ? 30 : 20;
-    for (let i = 0; i < cantidadPolen; i++) {
-      const polen = document.createElement('div');
-      polen.className = 'polen';
-      polen.style.left = Math.random() * 100 + '%';
-      polen.style.animationDuration = (10 + Math.random() * 16) + 's';
-      polen.style.animationDelay = Math.random() * 10 + 's';
-      const size = esMovil ? 6 + Math.random() * 6 : 4 + Math.random() * 5;
-      polen.style.width = size + 'px';
-      polen.style.height = size + 'px';
-      polen.style.background = Math.random() > 0.5 ? 'var(--dorado)' : 'var(--miel)';
-      fondo.appendChild(polen);
-    }
-
-    // Abejas voladoras CSS
-    const cantidadAbejas = esMovil ? 6 : 4;
-    for (let i = 0; i < cantidadAbejas; i++) {
-      const abeja = document.createElement('div');
-      abeja.className = 'abeja-voladora';
-      abeja.style.top = (8 + Math.random() * 70) + '%';
-      abeja.style.animationDuration = (14 + Math.random() * 16) + 's';
-      abeja.style.animationDelay = (Math.random() * -20) + 's';
-      const escala = esMovil ? 0.45 + Math.random() * 0.25 : 0.35 + Math.random() * 0.25;
-      abeja.style.transform = `scale(${escala})`;
-      fondo.appendChild(abeja);
-    }
-
     // Música y overlay
     const musica = document.getElementById('musica');
     const overlay = document.getElementById('overlay');
@@ -256,56 +210,35 @@
         btnMusica.style.display = 'flex';
         btnMusica.innerHTML = '🔇';
         btnMusica.title = 'Pausar música';
-        btnMusica.classList.add('pausa');
       }).catch(() => {
         btnMusica.style.display = 'flex';
         btnMusica.innerHTML = '🎵';
         btnMusica.title = 'Activar música';
-        btnMusica.classList.remove('pausa');
       });
     }
 
     function crearConfeti() {
-      const colores = ['#FFD93D', '#FFB800', '#FF80AB', '#81D4FA', '#CE93D8', '#66BB6A', '#FFF176', '#FF5722'];
-      for (let i = 0; i < 140; i++) {
+      const colores = ['#FFD700', '#FF80AB', '#81D4FA', '#CE93D8', '#66BB6A', '#FFF176'];
+      for (let i = 0; i < 80; i++) {
         setTimeout(() => {
           const confeti = document.createElement('div');
           confeti.className = 'confeti';
           confeti.style.left = Math.random() * 100 + '%';
           confeti.style.background = colores[Math.floor(Math.random() * colores.length)];
-          confeti.style.animationDuration = (2 + Math.random() * 2.5) + 's';
+          confeti.style.animationDuration = (2 + Math.random() * 2) + 's';
           confeti.style.width = (6 + Math.random() * 8) + 'px';
           confeti.style.height = confeti.style.width;
           confeti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
           document.body.appendChild(confeti);
-          setTimeout(() => confeti.remove(), 5000);
-        }, i * 18);
+          setTimeout(() => confeti.remove(), 4000);
+        }, i * 20);
       }
-    }
-
-    const nombreTexto = 'Kayli Isabella';
-    const nombreElement = document.getElementById('nombreTypewriter');
-    let nombreIndex = 0;
-
-    function escribirNombre() {
-      if (!nombreElement) return;
-      nombreElement.textContent = '';
-      nombreIndex = 0;
-      function escribir() {
-        if (nombreIndex < nombreTexto.length) {
-          nombreElement.textContent += nombreTexto.charAt(nombreIndex);
-          nombreIndex++;
-          setTimeout(escribir, 130);
-        }
-      }
-      escribir();
     }
 
     btnEntrar.addEventListener('click', () => {
       overlay.classList.add('oculto');
       iniciarMusica();
       crearConfeti();
-      escribirNombre();
     });
 
     btnMusica.addEventListener('click', () => {
@@ -313,12 +246,10 @@
         musica.pause();
         btnMusica.innerHTML = '🎵';
         btnMusica.title = 'Activar música';
-        btnMusica.classList.remove('pausa');
       } else {
         musica.play();
         btnMusica.innerHTML = '🔇';
         btnMusica.title = 'Pausar música';
-        btnMusica.classList.add('pausa');
       }
       sonando = !sonando;
     });
@@ -349,21 +280,84 @@
     actualizarCuenta();
     setInterval(actualizarCuenta, 1000);
 
-    // Animaciones al hacer scroll
+    // Navegación de slides
+    const container = document.getElementById('slidesContainer');
+    const dots = document.querySelectorAll('.slide-dots button');
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+    let isScrolling = false;
+
+    function goToSlide(index) {
+      if (index < 0 || index >= slides.length) return;
+      currentSlide = index;
+      slides[index].scrollIntoView({ behavior: 'smooth' });
+      updateDots();
+    }
+
+    function updateDots() {
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+      });
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => goToSlide(i));
+    });
+
+    // Detectar slide visible con IntersectionObserver
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+          const index = parseInt(entry.target.dataset.slide);
+          currentSlide = index;
+          updateDots();
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.5 });
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    slides.forEach(slide => observer.observe(slide));
 
-    // Efecto parallax en el fondo
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      fondo.style.transform = `translateY(${scrollY * 0.06}px)`;
+    // Wheel navigation
+    window.addEventListener('wheel', (e) => {
+      if (overlay.classList.contains('oculto') === false) return;
+      e.preventDefault();
+      if (isScrolling) return;
+      isScrolling = true;
+      if (e.deltaY > 0) {
+        goToSlide(currentSlide + 1);
+      } else {
+        goToSlide(currentSlide - 1);
+      }
+      setTimeout(() => isScrolling = false, 800);
+    }, { passive: false });
+
+    // Touch navigation
+    let touchStartY = 0;
+    window.addEventListener('touchstart', (e) => {
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    window.addEventListener('touchend', (e) => {
+      if (overlay.classList.contains('oculto') === false) return;
+      const touchEndY = e.changedTouches[0].clientY;
+      const diff = touchStartY - touchEndY;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+          goToSlide(currentSlide + 1);
+        } else {
+          goToSlide(currentSlide - 1);
+        }
+      }
+    }, { passive: true });
+
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+      if (overlay.classList.contains('oculto') === false) return;
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        goToSlide(currentSlide + 1);
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        goToSlide(currentSlide - 1);
+      }
     });
 
     // Botón compartir
