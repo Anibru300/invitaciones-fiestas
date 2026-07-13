@@ -524,6 +524,34 @@ body::before {
   border: 2px dashed var(--dorado);
 }
 
+.info-card-regalo-completo {
+  flex-direction: column;
+  text-align: center;
+  padding: 24px;
+}
+
+.info-card-regalo-completo .info-icono {
+  margin-bottom: 8px;
+}
+
+.info-card-regalo-completo .info-texto p {
+  margin-bottom: 8px;
+  color: #5A4A00;
+}
+
+.regalo-modo {
+  font-size: 2rem;
+  margin: 6px 0;
+}
+
+.regalo-frase {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.2rem;
+  color: var(--miel-oscura) !important;
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
 /* Ubicación / Mapa */
 .ubicacion {
   margin: 32px 0;
