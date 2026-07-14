@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#FFB6C1" />
   <title>Primer añito de Kayli Isabella 🐝</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐝</text></svg>">
-  <link rel="stylesheet" href="style.css?v=11" />
+  <link rel="stylesheet" href="style.css?v=12" />
 </head>
 <body>
   <!-- Partículas flotantes de polen/miel -->
@@ -249,7 +249,7 @@
 
     function crearConfeti() {
       const colores = ['#FFD700', '#FF80AB', '#81D4FA', '#CE93D8', '#66BB6A', '#FFF176'];
-      for (let i = 0; i < 80; i++) {
+      for (let i = 0; i < 60; i++) {
         setTimeout(() => {
           const confeti = document.createElement('div');
           confeti.className = 'confeti';
@@ -265,50 +265,91 @@
       }
     }
 
-    function crearCohetes() {
-      const emojis = ['🚀', '✨', '🌟', '💫', '⭐'];
-      for (let i = 0; i < 7; i++) {
+    function crearFuegosArtificiales() {
+      const colores = ['#FFD700', '#FF80AB', '#81D4FA', '#CE93D8', '#66BB6A', '#FF5722', '#00E676', '#FFEB3B', '#E040FB'];
+      const cantidad = 6;
+      for (let i = 0; i < cantidad; i++) {
         setTimeout(() => {
-          const cohete = document.createElement('div');
-          cohete.className = 'cohete';
-          cohete.textContent = '🚀';
-          cohete.style.left = (12 + Math.random() * 76) + '%';
-          cohete.style.animationDuration = (1.1 + Math.random() * 0.7) + 's';
-          cohete.style.fontSize = (1.8 + Math.random() * 0.8) + 'rem';
-          document.body.appendChild(cohete);
-
-          cohete.addEventListener('animationend', () => {
-            crearExplosion(cohete.style.left);
-            cohete.remove();
-          });
-        }, i * 220);
+          const left = 10 + Math.random() * 80;
+          const color = colores[Math.floor(Math.random() * colores.length)];
+          const altura = 55 + Math.random() * 25;
+          lanzarFuegoArtificial(left, color, altura);
+        }, i * 280);
       }
     }
 
-    function crearExplosion(left) {
-      const directions = [
-        { x: -1, y: -1 }, { x: 0, y: -1 }, { x: 1, y: -1 },
-        { x: -1, y: 0 }, { x: 1, y: 0 },
-        { x: -1, y: 1 }, { x: 0, y: 1 }, { x: 1, y: 1 }
-      ];
-      directions.forEach((dir, i) => {
-        const chispa = document.createElement('span');
-        chispa.className = 'chispa';
-        chispa.textContent = ['✨', '🌟', '💫', '⭐'][i % 4];
-        chispa.style.left = left;
-        chispa.style.top = '22%';
-        chispa.style.setProperty('--tx', dir.x * (55 + Math.random() * 25) + 'px');
-        chispa.style.setProperty('--ty', dir.y * (55 + Math.random() * 25) + 'px');
-        document.body.appendChild(chispa);
-        setTimeout(() => chispa.remove(), 950);
+    function lanzarFuegoArtificial(left, color, altura) {
+      const container = document.createElement('div');
+      container.className = 'fuego-artificial';
+      container.style.left = left + '%';
+      container.style.setProperty('--altura', '-' + altura + 'vh');
+      document.body.appendChild(container);
+
+      // Rastro
+      for (let i = 0; i < 6; i++) {
+        setTimeout(() => {
+          const rastro = document.createElement('div');
+          rastro.className = 'rastro-cohete';
+          rastro.style.background = color;
+          rastro.style.animationDelay = (i * 0.05) + 's';
+          container.appendChild(rastro);
+          setTimeout(() => rastro.remove(), 500);
+        }, i * 40);
+      }
+
+      const cohete = document.createElement('div');
+      cohete.className = 'cohete-cuerpo';
+      cohete.style.background = color;
+      cohete.style.boxShadow = `0 0 12px 4px ${color}`;
+      container.appendChild(cohete);
+
+      cohete.addEventListener('animationend', () => {
+        crearExplosion(container, color);
+        cohete.remove();
       });
+    }
+
+    function crearExplosion(container, color) {
+      const numParticulas = 18;
+      const colores = [color, '#FFFFFF', color, '#FFF176'];
+
+      // Flash de explosion
+      const flash = document.createElement('div');
+      flash.className = 'flash-explosion';
+      flash.style.background = `radial-gradient(circle, ${color} 0%, transparent 70%)`;
+      container.appendChild(flash);
+      setTimeout(() => flash.remove(), 350);
+
+      for (let i = 0; i < numParticulas; i++) {
+        const angle = (i / numParticulas) * Math.PI * 2;
+        const distancia = 60 + Math.random() * 60;
+        const tx = Math.cos(angle) * distancia;
+        const ty = Math.sin(angle) * distancia;
+        const duracion = 0.9 + Math.random() * 0.5;
+        const tamano = 4 + Math.random() * 5;
+        const colorParticula = colores[Math.floor(Math.random() * colores.length)];
+
+        const p = document.createElement('div');
+        p.className = 'particula-fuego';
+        p.style.background = colorParticula;
+        p.style.boxShadow = `0 0 8px 3px ${colorParticula}`;
+        p.style.width = tamano + 'px';
+        p.style.height = tamano + 'px';
+        p.style.left = '50%';
+        p.style.top = '0';
+        p.style.setProperty('--tx', tx + 'px');
+        p.style.setProperty('--ty', ty + 'px');
+        p.style.animationDuration = duracion + 's';
+        container.appendChild(p);
+        setTimeout(() => p.remove(), duracion * 1000 + 50);
+      }
     }
 
     btnEntrar.addEventListener('click', () => {
       overlay.classList.add('oculto');
       iniciarMusica();
       crearConfeti();
-      crearCohetes();
+      crearFuegosArtificiales();
     });
 
     btnMusica.addEventListener('click', () => {
@@ -393,12 +434,6 @@
       } catch (e) {}
     }
 
-    function finishNavigation() {
-      container.style.scrollSnapType = '';
-      isNavigating = false;
-      pendingIndex = null;
-    }
-
     function goToSlide(index, behavior = 'smooth') {
       if (index < 0 || index >= slides.length) return;
       if (isNavigating) {
@@ -410,8 +445,6 @@
       currentSlide = index;
       pendingIndex = null;
 
-      // Desactivar scroll-snap durante el scroll programado para evitar saltos bruscos
-      container.style.scrollSnapType = 'none';
       const targetTop = slides[index].offsetTop;
       container.scrollTo({ top: targetTop, behavior });
 
@@ -420,30 +453,12 @@
       activateSlideAnimations(index);
 
       clearTimeout(navigateTimeout);
-
-      const onScrollEnd = () => {
-        container.removeEventListener('scrollend', onScrollEnd);
-        finishNavigation();
+      navigateTimeout = setTimeout(() => {
+        isNavigating = false;
         if (pendingIndex !== null && pendingIndex !== currentSlide) {
           goToSlide(pendingIndex);
         }
-      };
-
-      if ('onscrollend' in window) {
-        container.addEventListener('scrollend', onScrollEnd, { once: true });
-        // Fallback por si scrollend no se dispara en algunos navegadores
-        navigateTimeout = setTimeout(() => {
-          container.removeEventListener('scrollend', onScrollEnd);
-          finishNavigation();
-        }, 900);
-      } else {
-        navigateTimeout = setTimeout(() => {
-          finishNavigation();
-          if (pendingIndex !== null && pendingIndex !== currentSlide) {
-            goToSlide(pendingIndex);
-          }
-        }, 900);
-      }
+      }, behavior === 'smooth' ? 900 : 150);
     }
 
     function activateSlideAnimations(index) {
@@ -490,39 +505,6 @@
     }, { threshold: [0, 0.5, 0.75, 1] });
 
     slides.forEach(slide => observer.observe(slide));
-
-    // Touch / swipe navigation con protección contra doble acción
-    let touchStartY = 0;
-    let touchStartTime = 0;
-    let touchStartScrollTop = 0;
-
-    window.addEventListener('touchstart', (e) => {
-      touchStartY = e.touches[0].clientY;
-      touchStartTime = Date.now();
-      touchStartScrollTop = container.scrollTop;
-    }, { passive: true });
-
-    window.addEventListener('touchend', (e) => {
-      if (overlay.classList.contains('oculto') === false) return;
-      if (isNavigating) return;
-
-      const touchEndY = e.changedTouches[0].clientY;
-      const diff = touchStartY - touchEndY;
-      const duration = Date.now() - touchStartTime;
-      const scrollDiff = Math.abs(container.scrollTop - touchStartScrollTop);
-
-      // Si el scroll nativo ya se movió más de la mitad de una slide, confiar en snap
-      if (scrollDiff > window.innerHeight * 0.4) return;
-
-      // Detectar swipe intencional (más de 50px y menos de 700ms)
-      if (Math.abs(diff) > 50 && duration < 700) {
-        if (diff > 0) {
-          goToSlide(currentSlide + 1);
-        } else {
-          goToSlide(currentSlide - 1);
-        }
-      }
-    }, { passive: true });
 
     // Keyboard navigation con throttle
     let keyThrottle = false;
