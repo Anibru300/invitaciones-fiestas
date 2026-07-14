@@ -937,13 +937,13 @@ body {
 
 .regalo-card p {
   color: var(--gris);
-  font-size: clamp(0.8rem, 3.5vw, 0.95rem);
+  font-size: clamp(0.9rem, 3.8vw, 1.05rem);
   line-height: 1.4;
   margin-bottom: 8px;
 }
 
 .regalo-modo {
-  font-size: 2rem;
+  font-size: 2.4rem;
   margin: 8px 0;
 }
 
