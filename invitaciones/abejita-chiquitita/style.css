@@ -175,15 +175,10 @@ body {
 
 /* Animaciones de entrada */
 .animar {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity, transform;
-}
-
-.slide:not(.active) .animar {
   opacity: 0;
-  transform: translateY(30px) scale(0.96);
+  transform: translateY(22px) scale(0.98);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
 }
 
 .slide.active .animar,
@@ -192,11 +187,17 @@ body {
   transform: translateY(0) scale(1);
 }
 
-.animar-1 { transition-delay: 0.1s; }
-.animar-2 { transition-delay: 0.2s; }
-.animar-3 { transition-delay: 0.3s; }
-.animar-4 { transition-delay: 0.4s; }
-.animar-5 { transition-delay: 0.5s; }
+/* Una vez animado, mantener estado final para evitar parpadeos al volver a la slide */
+.animar.animado {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.animar-1 { transition-delay: 0.08s; }
+.animar-2 { transition-delay: 0.16s; }
+.animar-3 { transition-delay: 0.24s; }
+.animar-4 { transition-delay: 0.32s; }
+.animar-5 { transition-delay: 0.4s; }
 
 /* Abeja con vuelo más natural */
 /* Scroll hint más suave */
@@ -337,6 +338,30 @@ body {
   object-fit: contain;
   filter: drop-shadow(0 8px 20px rgba(0,0,0,0.15));
   z-index: 5;
+}
+
+/* La abeja solo hace fade con .animar; el vuelo lo controla su propia animación */
+.abeja-slide.animar {
+  transform: none;
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Las abejas solo hacen su animación de entrada la primera vez */
+.abeja-bienvenida.animado {
+  animation: volarSuave 5s ease-in-out infinite;
+}
+
+.abeja-nombre.animado {
+  animation: flotarCentrado 3s ease-in-out infinite;
+}
+
+.abeja-datos.animado {
+  animation: volarPeque 4s ease-in-out infinite;
+}
+
+.abeja-info.animado,
+.abeja-despedida.animado {
+  animation: flotar 3s ease-in-out infinite;
 }
 
 /* Slide 1: Bienvenida */

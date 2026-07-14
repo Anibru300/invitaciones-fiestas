@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#FFB6C1" />
   <title>Primer añito de Kayli Isabella 🐝</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐝</text></svg>">
-  <link rel="stylesheet" href="style.css?v=10" />
+  <link rel="stylesheet" href="style.css?v=11" />
 </head>
 <body>
   <!-- Partículas flotantes de polen/miel -->
@@ -322,6 +322,7 @@
     let navigateTimeout;
     let lastSlideSound = -1;
     let lastSoundTime = 0;
+    let pendingIndex = null;
 
     function updateDots() {
       dots.forEach((dot, i) => {
@@ -338,6 +339,7 @@
         const AudioContext = window.AudioContext || window.webkitAudioContext;
         if (!AudioContext || document.visibilityState === 'hidden') return;
         const ctx = new AudioContext();
+        if (ctx.state === 'suspended') ctx.resume();
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.type = 'sine';
@@ -354,69 +356,129 @@
       } catch (e) {}
     }
 
+    function finishNavigation() {
+      container.style.scrollSnapType = '';
+      isNavigating = false;
+      pendingIndex = null;
+    }
+
     function goToSlide(index, behavior = 'smooth') {
-      if (index < 0 || index >= slides.length || isNavigating) return;
+      if (index < 0 || index >= slides.length) return;
+      if (isNavigating) {
+        // Permitir cambiar de destino si ya estábamos navegando
+        pendingIndex = index;
+        return;
+      }
       isNavigating = true;
       currentSlide = index;
+      pendingIndex = null;
+
       // Desactivar scroll-snap durante el scroll programado para evitar saltos bruscos
       container.style.scrollSnapType = 'none';
-      slides[index].scrollIntoView({ behavior });
+      const targetTop = slides[index].offsetTop;
+      container.scrollTo({ top: targetTop, behavior });
+
       updateDots();
       playSlideSound();
+      activateSlideAnimations(index);
+
       clearTimeout(navigateTimeout);
-      navigateTimeout = setTimeout(() => {
-        container.style.scrollSnapType = '';
-        isNavigating = false;
-      }, 950);
+
+      const onScrollEnd = () => {
+        container.removeEventListener('scrollend', onScrollEnd);
+        finishNavigation();
+        if (pendingIndex !== null && pendingIndex !== currentSlide) {
+          goToSlide(pendingIndex);
+        }
+      };
+
+      if ('onscrollend' in window) {
+        container.addEventListener('scrollend', onScrollEnd, { once: true });
+        // Fallback por si scrollend no se dispara en algunos navegadores
+        navigateTimeout = setTimeout(() => {
+          container.removeEventListener('scrollend', onScrollEnd);
+          finishNavigation();
+        }, 900);
+      } else {
+        navigateTimeout = setTimeout(() => {
+          finishNavigation();
+          if (pendingIndex !== null && pendingIndex !== currentSlide) {
+            goToSlide(pendingIndex);
+          }
+        }, 900);
+      }
+    }
+
+    function activateSlideAnimations(index) {
+      slides.forEach((slide, i) => {
+        if (i === index) {
+          slide.classList.add('active');
+          slide.querySelectorAll('.animar').forEach(el => {
+            el.classList.add('visible');
+            // Marcar como animado para que no vuelva a desaparecer bruscamente
+            if (!el.classList.contains('animado')) {
+              el.classList.add('animado');
+            }
+          });
+        } else {
+          slide.classList.remove('active');
+          // No quitamos 'animado' para que al regresar no haya parpadeo
+          slide.querySelectorAll('.animar').forEach(el => el.classList.remove('visible'));
+        }
+      });
     }
 
     dots.forEach((dot, i) => {
       dot.addEventListener('click', () => {
-        if (isNavigating) return;
         goToSlide(i);
       });
     });
 
-    // Detectar slide visible con IntersectionObserver
+    // Detectar slide visible con IntersectionObserver (solo para sincronizar dots en scroll manual)
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         const slide = entry.target;
         const index = parseInt(slide.dataset.slide);
-        const isVisible = entry.isIntersecting && entry.intersectionRatio >= 0.35;
-        if (isVisible) {
-          if (!isNavigating) {
+        const isMostlyVisible = entry.isIntersecting && entry.intersectionRatio >= 0.6;
+
+        if (isMostlyVisible) {
+          if (!isNavigating && currentSlide !== index) {
             currentSlide = index;
             updateDots();
             playSlideSound();
+            activateSlideAnimations(index);
           }
-          slide.classList.add('active');
-          slide.querySelectorAll('.animar').forEach(el => el.classList.add('visible'));
-        } else if (!entry.isIntersecting) {
-          slide.classList.remove('active');
-          slide.querySelectorAll('.animar').forEach(el => el.classList.remove('visible'));
         }
       });
-    }, { threshold: [0, 0.35, 0.7, 1] });
+    }, { threshold: [0, 0.5, 0.75, 1] });
 
     slides.forEach(slide => observer.observe(slide));
 
-    // Touch navigation con debounce
+    // Touch / swipe navigation con protección contra doble acción
     let touchStartY = 0;
     let touchStartTime = 0;
+    let touchStartScrollTop = 0;
+
     window.addEventListener('touchstart', (e) => {
       touchStartY = e.touches[0].clientY;
       touchStartTime = Date.now();
+      touchStartScrollTop = container.scrollTop;
     }, { passive: true });
 
     window.addEventListener('touchend', (e) => {
       if (overlay.classList.contains('oculto') === false) return;
       if (isNavigating) return;
+
       const touchEndY = e.changedTouches[0].clientY;
       const diff = touchStartY - touchEndY;
       const duration = Date.now() - touchStartTime;
-      const velocity = Math.abs(diff) / (duration || 1);
-      // Detectar swipe intencional (más de 50px y menos de 600ms)
-      if (Math.abs(diff) > 50 && duration < 600) {
+      const scrollDiff = Math.abs(container.scrollTop - touchStartScrollTop);
+
+      // Si el scroll nativo ya se movió más de la mitad de una slide, confiar en snap
+      if (scrollDiff > window.innerHeight * 0.4) return;
+
+      // Detectar swipe intencional (más de 50px y menos de 700ms)
+      if (Math.abs(diff) > 50 && duration < 700) {
         if (diff > 0) {
           goToSlide(currentSlide + 1);
         } else {
