@@ -220,9 +220,6 @@
         <a class="boton-confirmar animar animar-3" href="https://wa.me/5216311912233?text=¡Hola!%20Confirmo%20mi%20asistencia%20al%20primer%20añito%20de%20Kayli%20Isabella%20🐝" target="_blank" rel="noopener">
           <span>💬</span> Confirmar asistencia
         </a>
-        <button class="boton-compartir animar animar-4" id="btnCompartir" type="button">
-          <span>🔗</span> Compartir invitación
-        </button>
         <div class="esquina-pagina"></div>
       </div>
     </section>
@@ -505,29 +502,6 @@
       }
     });
 
-    // Botón compartir
-    const btnCompartir = document.getElementById('btnCompartir');
-    if (btnCompartir) {
-      btnCompartir.addEventListener('click', async () => {
-        const url = window.location.href;
-        const texto = '¡Estás invitado al primer añito de Kayli Isabella! 🐝🎉';
-        if (navigator.share) {
-          try {
-            await navigator.share({ title: 'Invitación de cumpleaños', text: texto, url: url });
-          } catch (err) {}
-        } else {
-          try {
-            await navigator.clipboard.writeText(url);
-            btnCompartir.innerHTML = '<span>✅</span> ¡Link copiado!';
-            setTimeout(() => {
-              btnCompartir.innerHTML = '<span>🔗</span> Compartir invitación';
-            }, 2500);
-          } catch (err) {
-            window.prompt('Copia este link para compartir:', url);
-          }
-        }
-      });
-    }
   </script>
 </body>
 </html>
