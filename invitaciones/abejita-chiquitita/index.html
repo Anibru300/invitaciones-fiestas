@@ -265,10 +265,50 @@
       }
     }
 
+    function crearCohetes() {
+      const emojis = ['🚀', '✨', '🌟', '💫', '⭐'];
+      for (let i = 0; i < 7; i++) {
+        setTimeout(() => {
+          const cohete = document.createElement('div');
+          cohete.className = 'cohete';
+          cohete.textContent = '🚀';
+          cohete.style.left = (12 + Math.random() * 76) + '%';
+          cohete.style.animationDuration = (1.1 + Math.random() * 0.7) + 's';
+          cohete.style.fontSize = (1.8 + Math.random() * 0.8) + 'rem';
+          document.body.appendChild(cohete);
+
+          cohete.addEventListener('animationend', () => {
+            crearExplosion(cohete.style.left);
+            cohete.remove();
+          });
+        }, i * 220);
+      }
+    }
+
+    function crearExplosion(left) {
+      const directions = [
+        { x: -1, y: -1 }, { x: 0, y: -1 }, { x: 1, y: -1 },
+        { x: -1, y: 0 }, { x: 1, y: 0 },
+        { x: -1, y: 1 }, { x: 0, y: 1 }, { x: 1, y: 1 }
+      ];
+      directions.forEach((dir, i) => {
+        const chispa = document.createElement('span');
+        chispa.className = 'chispa';
+        chispa.textContent = ['✨', '🌟', '💫', '⭐'][i % 4];
+        chispa.style.left = left;
+        chispa.style.top = '22%';
+        chispa.style.setProperty('--tx', dir.x * (55 + Math.random() * 25) + 'px');
+        chispa.style.setProperty('--ty', dir.y * (55 + Math.random() * 25) + 'px');
+        document.body.appendChild(chispa);
+        setTimeout(() => chispa.remove(), 950);
+      });
+    }
+
     btnEntrar.addEventListener('click', () => {
       overlay.classList.add('oculto');
       iniciarMusica();
       crearConfeti();
+      crearCohetes();
     });
 
     btnMusica.addEventListener('click', () => {
