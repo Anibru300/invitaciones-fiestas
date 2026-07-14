@@ -494,7 +494,7 @@ body {
 
 .titulo-hola {
   font-family: 'Pacifico', cursive;
-  font-size: clamp(2.2rem, 11vw, 5rem);
+  font-size: clamp(2.6rem, 13vw, 6rem);
   color: var(--rosa-fuerte);
   text-shadow: 3px 3px 0 var(--blanco), 5px 5px 0 rgba(0,0,0,0.1);
   margin-bottom: 10px;
@@ -503,7 +503,7 @@ body {
 
 .texto-bienvenida {
   font-family: 'Fredoka', sans-serif;
-  font-size: clamp(0.82rem, 3.8vw, 1.4rem);
+  font-size: clamp(0.95rem, 4.5vw, 1.6rem);
   color: var(--negro);
   font-weight: 600;
   line-height: 1.35;
@@ -619,7 +619,7 @@ body {
 
 .nombre-3d {
   font-family: 'Pacifico', cursive;
-  font-size: clamp(1.7rem, 8vw, 5rem);
+  font-size: clamp(2.2rem, 10vw, 6rem);
   color: var(--amarillo);
   text-shadow:
     2px 2px 0 var(--dorado),
@@ -638,7 +638,7 @@ body {
 
 .cumple-texto {
   font-family: 'Fredoka', sans-serif;
-  font-size: clamp(1.1rem, 5vw, 2.2rem);
+  font-size: clamp(1.3rem, 6vw, 2.6rem);
   color: var(--blanco);
   font-weight: 600;
   text-shadow: 2px 2px 0 var(--rosa-fuerte);
@@ -755,7 +755,7 @@ body {
 
 .cuenta-titulo {
   font-family: 'Pacifico', cursive;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   color: var(--rosa-fuerte);
   margin-bottom: 14px;
 }
@@ -778,7 +778,7 @@ body {
 .cuenta-numero {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 1.8rem;
+  font-size: 2.1rem;
   color: var(--negro);
   display: block;
   line-height: 1;
@@ -801,7 +801,7 @@ body {
 
 .dato-linea {
   font-family: 'Fredoka', sans-serif;
-  font-size: clamp(0.82rem, 3.6vw, 1.3rem);
+  font-size: clamp(0.95rem, 4vw, 1.5rem);
   color: var(--negro);
   font-weight: 600;
   margin: 10px 0;
@@ -881,7 +881,7 @@ body {
 
 .info-titulo {
   font-family: 'Pacifico', cursive;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: var(--rosa-fuerte);
   margin-bottom: 12px;
 }
@@ -966,7 +966,7 @@ body {
 
 .no-faltes {
   font-family: 'Pacifico', cursive;
-  font-size: clamp(2rem, 10vw, 5rem);
+  font-size: clamp(2.4rem, 12vw, 6rem);
   color: var(--amarillo);
   text-shadow:
     2px 2px 0 var(--dorado),
@@ -982,7 +982,7 @@ body {
 
 .diversion {
   font-family: 'Fredoka', sans-serif;
-  font-size: clamp(1.05rem, 4.5vw, 1.8rem);
+  font-size: clamp(1.2rem, 5vw, 2rem);
   color: var(--blanco);
   font-weight: 600;
   text-shadow: 2px 2px 0 var(--rosa-fuerte);
@@ -991,7 +991,7 @@ body {
 
 .frase-final {
   font-family: 'Dancing Script', cursive;
-  font-size: clamp(0.85rem, 3.2vw, 1.1rem);
+  font-size: clamp(1rem, 3.8vw, 1.3rem);
   color: var(--negro);
   background: rgba(255,255,255,0.85);
   padding: 12px;
@@ -1214,20 +1214,20 @@ body {
   .slide-dots button { width: 8px; height: 8px; }
 
   .abeja-bienvenida { width: 180px; height: 180px; bottom: 18%; }
-  .titulo-hola { font-size: clamp(2.5rem, 12vw, 4rem); }
-  .texto-bienvenida { font-size: 1.1rem; }
+  .titulo-hola { font-size: clamp(2.8rem, 13vw, 5rem); }
+  .texto-bienvenida { font-size: 1.25rem; }
 
   .flor-grande { font-size: 8rem; }
   .flor-media { font-size: 5rem; }
-  .cuenta-numero { font-size: 1.5rem; }
-  .dato-linea { font-size: 1rem; }
+  .cuenta-numero { font-size: 1.7rem; }
+  .dato-linea { font-size: 1.15rem; }
 
   .mapa-mini { height: 130px; }
-  .info-titulo { font-size: 1.2rem; }
+  .info-titulo { font-size: 1.4rem; }
   .info-card { padding: 16px; }
 
-  .no-faltes { font-size: clamp(2rem, 10vw, 4rem); }
-  .diversion { font-size: 1.2rem; }
+  .no-faltes { font-size: clamp(2.4rem, 12vw, 5rem); }
+  .diversion { font-size: 1.4rem; }
 }
 
 @media (max-width: 360px) {
