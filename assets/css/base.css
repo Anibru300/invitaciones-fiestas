@@ -1,16 +1,34 @@
 /* Estilos base compartidos para todas las invitaciones */
 
+:root {
+  --rosa-pastel: #F78ACB;
+  --rosa-fuerte: #FF4FA8;
+  --amarillo-miel: #FFD54F;
+  --dorado: #FFB300;
+  --lila: #C7A5FF;
+  --verde-pastel: #B6E388;
+  --blanco: #FFFFFF;
+  --negro: #2A1F1F;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
-html,
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
 body {
   min-height: 100vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100dvh;
+  font-family: 'Fredoka', 'Baloo 2', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
+  color: var(--negro);
 }
 
 img {
@@ -20,4 +38,10 @@ img {
 
 a {
   text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
 }
