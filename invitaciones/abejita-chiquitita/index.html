@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Fredoka:wght@400;500;600;700&family=Lilita+One&family=Pacifico&display=swap">
-  <link rel="stylesheet" href="style.css?v=17" />
+  <link rel="stylesheet" href="style.css?v=20" />
 </head>
 <body>
   <div class="app">
@@ -460,7 +460,12 @@
       currentSlide = index;
       pendingIndex = null;
 
-      slides[index].scrollIntoView({ behavior, block: 'start' });
+      slides.forEach((slide, i) => {
+        slide.style.transition = behavior === 'smooth'
+          ? 'transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1)'
+          : 'none';
+        slide.style.transform = `translateY(${(i - index) * 100}%)`;
+      });
 
       updateDots();
       playSlideSound();
@@ -472,7 +477,7 @@
         if (pendingIndex !== null && pendingIndex !== currentSlide) {
           goToSlide(pendingIndex);
         }
-      }, behavior === 'smooth' ? 1100 : 150);
+      }, behavior === 'smooth' ? 600 : 50);
     }
 
     function activateSlideAnimations(index) {
@@ -496,25 +501,6 @@
       dot.addEventListener('click', () => goToSlide(i));
     });
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const slide = entry.target;
-        const index = parseInt(slide.dataset.slide);
-        const isMostlyVisible = entry.isIntersecting && entry.intersectionRatio >= 0.6;
-
-        if (isMostlyVisible) {
-          if (!isNavigating && currentSlide !== index) {
-            currentSlide = index;
-            updateDots();
-            playSlideSound();
-            activateSlideAnimations(index);
-          }
-        }
-      });
-    }, { threshold: [0, 0.5, 0.75, 1] });
-
-    slides.forEach(slide => observer.observe(slide));
-
     let keyThrottle = false;
     window.addEventListener('keydown', (e) => {
       if (overlay.classList.contains('oculto') === false) return;
@@ -536,35 +522,44 @@
     let wheelThrottle = false;
     container.addEventListener('wheel', (e) => {
       if (overlay.classList.contains('oculto') === false) return;
-      if (wheelThrottle) {
-        e.preventDefault();
-        return;
-      }
       e.preventDefault();
+      if (wheelThrottle) return;
       wheelThrottle = true;
       const direction = Math.sign(e.deltaY);
       goToSlide(currentSlide + direction);
-      setTimeout(() => wheelThrottle = false, 900);
+      setTimeout(() => wheelThrottle = false, 800);
     }, { passive: false });
 
     // Control de swipe (móvil)
     let touchStartY = 0;
+    let touchStartX = 0;
     let touchThrottle = false;
     container.addEventListener('touchstart', (e) => {
       if (overlay.classList.contains('oculto') === false) return;
       touchStartY = e.touches[0].clientY;
+      touchStartX = e.touches[0].clientX;
     }, { passive: true });
 
     container.addEventListener('touchend', (e) => {
       if (overlay.classList.contains('oculto') === false) return;
       if (touchThrottle) return;
       const deltaY = touchStartY - e.changedTouches[0].clientY;
-      if (Math.abs(deltaY) > 40) {
+      const deltaX = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(deltaY) > 60 && Math.abs(deltaY) > Math.abs(deltaX)) {
         touchThrottle = true;
         goToSlide(currentSlide + Math.sign(deltaY));
-        setTimeout(() => touchThrottle = false, 900);
+        setTimeout(() => touchThrottle = false, 800);
       }
     }, { passive: true });
+
+    // Inicializar posiciones de slides
+    slides.forEach((slide, i) => {
+      slide.style.transform = `translateY(${i * 100}%)`;
+    });
+
+    // Inicializar primera slide
+    updateDots();
+    activateSlideAnimations(0);
 
     // ===== Efectos de entrada =====
     function crearConfeti() {

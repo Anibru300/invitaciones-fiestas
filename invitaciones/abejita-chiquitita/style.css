@@ -29,7 +29,7 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow: hidden;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -37,7 +37,7 @@ body {
   font-family: var(--font-body);
   background: var(--rosa-pastel);
   color: var(--negro);
-  overflow-x: hidden;
+  overflow: hidden;
   min-height: 100vh;
   min-height: 100dvh;
   overflow-wrap: break-word;
@@ -261,15 +261,13 @@ button {
 
 /* ===== Slides ===== */
 .slides-container {
+  position: relative;
   height: 100vh;
   height: 100dvh;
   width: 100%;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  scroll-snap-type: y mandatory;
+  overflow: hidden;
   scroll-behavior: smooth;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  touch-action: none;
 }
 
 .slides-container::-webkit-scrollbar {
@@ -277,20 +275,20 @@ button {
 }
 
 .slide {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100vh;
   height: 100dvh;
-  min-height: 100vh;
-  min-height: 100dvh;
-  scroll-snap-align: start;
   overflow-x: hidden;
   overflow-y: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  -webkit-overflow-scrolling: touch;
+  transition: transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
 }
 
 .slide-content {
