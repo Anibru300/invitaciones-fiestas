@@ -27,12 +27,18 @@
 
   <!-- Overlay de bienvenida -->
   <div class="overlay" id="overlay">
+    <div class="overlay-miel"></div>
+    <div class="overlay-nube nube-ov1"></div>
+    <div class="overlay-nube nube-ov2"></div>
     <img src="../../assets/images/personajes/abejita.png" alt="Abejita" class="overlay-abeja-img">
     <h1 class="overlay-titulo">Nuestra abejita chiquita<br>está cumpliendo su primer añito</h1>
     <p class="overlay-sub">Toca para abrir la invitación</p>
     <button class="overlay-boton" id="btnEntrar">
       <span>🎵</span> Abrir invitación
     </button>
+    <div class="overlay-flores">
+      <span>🌸</span><span>🌼</span><span>🌷</span><span>🌸</span><span>🌼</span><span>🌷</span>
+    </div>
   </div>
 
   <!-- Música de fondo -->
@@ -110,27 +116,39 @@
 
     <!-- Slide 2: Nombre y edad -->
     <section class="slide slide-nombre" data-slide="1">
-      <div class="panal-fondo"></div>
-      <div class="arcoiris"></div>
-      <div class="nube nube-rosa1"></div>
-      <div class="nube nube-rosa2"></div>
-      <div class="panal-esquina panal-top-left"></div>
-      <div class="panal-esquina panal-top-right"></div>
-      <!-- Reemplazar la abeja por la foto real de Kayli cuando esté disponible -->
+      <div class="fondo-rosa"></div>
+      <div class="nube nube1"></div>
+      <div class="nube nube2"></div>
+      <div class="miel-drips">
+        <div class="miel-drip" style="left:6%; animation-delay:0s"></div>
+        <div class="miel-drip" style="left:18%; animation-delay:0.6s"></div>
+        <div class="miel-drip" style="left:32%; animation-delay:1.2s"></div>
+        <div class="miel-drip" style="left:48%; animation-delay:0.4s"></div>
+        <div class="miel-drip" style="left:64%; animation-delay:0.9s"></div>
+        <div class="miel-drip" style="left:78%; animation-delay:0.2s"></div>
+        <div class="miel-drip" style="left:92%; animation-delay:1.1s"></div>
+      </div>
+      <div class="tarro-miel tarro-izq">🍯</div>
+      <div class="tarro-miel tarro-der">🍯</div>
+      <div class="colina-portada colina-portada-verde"></div>
+      <div class="colina-portada colina-portada-clara"></div>
       <img src="../../assets/images/personajes/abejita.png" alt="Abejita" class="abeja-slide abeja-nombre animar">
-      <span class="flor-bailarina" style="left:4%; bottom:15%; animation-delay:0.2s">🌸</span>
-      <span class="flor-bailarina" style="right:6%; bottom:22%; animation-delay:0.6s">🌼</span>
+      <span class="flor-bailarina" style="left:4%; bottom:18%; animation-delay:0.2s">🌸</span>
+      <span class="flor-bailarina" style="right:6%; bottom:24%; animation-delay:0.6s">🌼</span>
       <div class="slide-content">
         <h1 class="nombre-3d animar">Kayli Isabella</h1>
         <p class="cumple-texto animar animar-1">cumple <span class="numero-edad">1</span></p>
         <div class="esquina-pagina"></div>
       </div>
-      <div class="flores-blancas">
-        <span class="margarita" style="left:-5%; bottom:-20px; font-size:5rem">🌼</span>
-        <span class="margarita" style="left:15%; bottom:-30px; font-size:6rem">🌼</span>
-        <span class="margarita" style="left:40%; bottom:-15px; font-size:5.5rem">🌼</span>
-        <span class="margarita" style="left:65%; bottom:-25px; font-size:6.5rem">🌼</span>
-        <span class="margarita" style="left:85%; bottom:-20px; font-size:5rem">🌼</span>
+      <div class="flores-portada">
+        <span class="flor-portada" style="left:3%; bottom:0">🌸</span>
+        <span class="flor-portada" style="left:15%; bottom:-5px">🌼</span>
+        <span class="flor-portada" style="left:28%; bottom:5px">🌷</span>
+        <span class="flor-portada" style="left:42%; bottom:-8px">🌸</span>
+        <span class="flor-portada" style="left:56%; bottom:0">🌼</span>
+        <span class="flor-portada" style="left:70%; bottom:-3px">🌷</span>
+        <span class="flor-portada" style="left:83%; bottom:8px">🌸</span>
+        <span class="flor-portada" style="left:94%; bottom:-5px">🌼</span>
       </div>
     </section>
 
@@ -193,7 +211,7 @@
           <h3 class="info-titulo">🎁 Regalo</h3>
           <p>Su presencia es el mejor regalo.</p>
           <p>Si deseas obsequiarme algo:</p>
-          <p class="regalo-modo">🎁</p>
+          <p class="regalo-modo">🎁 💌</p>
           <p>Talla 18 meses</p>
         </div>
         <div class="esquina-pagina"></div>
@@ -223,6 +241,8 @@
       <div class="globo globo3">🎈</div>
       <div class="globo globo4">🎈</div>
       <div class="globo globo5">🎈</div>
+      <div class="globo-lateral globo-izq">🎈</div>
+      <div class="globo-lateral globo-der">🎈</div>
       <div class="fuegos">
         <span class="fuego" style="left:10%; top:20%">✨</span>
         <span class="fuego" style="left:85%; top:15%">✨</span>
@@ -251,6 +271,9 @@
         <a class="boton-confirmar animar animar-6" href="https://wa.me/5216311912233?text=¡Hola!%20Confirmo%20mi%20asistencia%20al%20primer%20añito%20de%20Kayli%20Isabella%20🐝" target="_blank" rel="noopener">
           <span>💬</span> Confirmar asistencia
         </a>
+        <button class="boton-compartir animar animar-7" type="button" onclick="compartirInvitacion()">
+          <span>🔗</span> Compartir invitación
+        </button>
         <div class="esquina-pagina"></div>
       </div>
       <img src="../../assets/images/personajes/payasito.png" alt="Payasito" class="personaje-extra payaso-slide animar animar-1">
@@ -566,6 +589,23 @@
       }
     });
 
+    function compartirInvitacion() {
+      const url = window.location.href;
+      const texto = '¡Te invito al primer añito de Kayli Isabella! 🐝🎉';
+      if (navigator.share) {
+        navigator.share({
+          title: 'Invitación - Kayli Isabella',
+          text: texto,
+          url: url
+        }).catch(() => {});
+      } else if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(() => {
+          alert('Enlace copiado al portapapeles. ¡Compártelo!');
+        }).catch(() => {});
+      } else {
+        alert('Copia este enlace para compartir: ' + url);
+      }
+    }
   </script>
 </body>
 </html>
