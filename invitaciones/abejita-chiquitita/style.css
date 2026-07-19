@@ -11,10 +11,10 @@
   --blanco: #FFFFFF;
   --negro: #2A1F1F;
 
-  --font-display: 'Lilita One', cursive;
-  --font-body: 'Fredoka', sans-serif;
-  --font-baloo: 'Baloo 2', cursive;
-  --font-name: 'Pacifico', cursive;
+  --font-display: 'Lilita One', 'Arial Black', 'Impact', sans-serif;
+  --font-body: 'Fredoka', 'Segoe UI', 'Arial Rounded MT Bold', 'Trebuchet MS', sans-serif;
+  --font-baloo: 'Baloo 2', 'Segoe UI', 'Trebuchet MS', sans-serif;
+  --font-name: 'Pacifico', 'Brush Script MT', 'Comic Sans MS', cursive;
 }
 
 * {
@@ -22,11 +22,15 @@
   padding: 0;
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -36,6 +40,9 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
   min-height: 100dvh;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 img {
@@ -277,11 +284,13 @@ button {
   min-height: 100vh;
   min-height: 100dvh;
   scroll-snap-align: start;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  -webkit-overflow-scrolling: touch;
 }
 
 .slide-content {
@@ -571,9 +580,8 @@ button {
     -2px 2px 0 var(--blanco),
     2px 2px 0 var(--blanco),
     4px 4px 0 var(--rosa-pastel),
-    6px 6px 0 var(--dorado),
-    0 0 25px rgba(255, 79, 168, 0.6),
-    0 0 50px rgba(255, 79, 168, 0.35);
+    5px 5px 0 var(--dorado),
+    0 0 20px rgba(255, 79, 168, 0.55);
   margin-bottom: 12px;
   animation: aparecer 0.8s ease-out both;
 }
@@ -636,9 +644,8 @@ button {
     -2px 2px 0 var(--blanco),
     2px 2px 0 var(--blanco),
     4px 4px 0 var(--dorado),
-    6px 6px 0 rgba(0, 0, 0, 0.12),
-    0 0 25px rgba(255, 213, 79, 0.6),
-    0 0 50px rgba(255, 213, 79, 0.35);
+    5px 5px 0 rgba(0, 0, 0, 0.1),
+    0 0 20px rgba(255, 213, 79, 0.55);
   animation: aparecer 0.8s ease-out 0.55s both;
 }
 
@@ -899,8 +906,18 @@ button {
 
 /* ===== Slide 3: Despedida ===== */
 .slide-despedida {
-  justify-content: flex-start;
-  padding-top: 60px;
+  justify-content: center;
+  padding-top: 0;
+  padding-bottom: 20px;
+}
+
+.slide-despedida .slide-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 120px;
+  padding-top: 10px;
 }
 
 .slide-despedida .slide-content {
@@ -995,8 +1012,8 @@ button {
     -2px 2px 0 var(--blanco),
     2px 2px 0 var(--blanco),
     4px 4px 0 var(--lila),
-    6px 6px 0 rgba(0, 0, 0, 0.1),
-    0 0 25px rgba(255, 79, 168, 0.45);
+    5px 5px 0 rgba(0, 0, 0, 0.1),
+    0 0 20px rgba(255, 79, 168, 0.4);
 }
 
 .corazon-central {
@@ -1015,8 +1032,8 @@ button {
     -2px 2px 0 var(--blanco),
     2px 2px 0 var(--blanco),
     4px 4px 0 var(--dorado),
-    6px 6px 0 rgba(0, 0, 0, 0.1),
-    0 0 25px rgba(255, 213, 79, 0.5);
+    5px 5px 0 rgba(0, 0, 0, 0.1),
+    0 0 20px rgba(255, 213, 79, 0.45);
 }
 
 .diversion {
@@ -1292,6 +1309,159 @@ button {
   .no-faltes { font-size: 1.5rem; }
   .banner { padding: 6px 14px; font-size: 0.75rem; }
   .personaje-despedida { width: 90px; height: 90px; }
+}
+
+/* ===== Ajustes generales para móviles ===== */
+@media (max-width: 430px) {
+  .titulo-hola {
+    text-shadow:
+      -1px -1px 0 var(--blanco),
+      1px -1px 0 var(--blanco),
+      -1px 1px 0 var(--blanco),
+      1px 1px 0 var(--blanco),
+      3px 3px 0 var(--rosa-pastel),
+      4px 4px 0 var(--dorado),
+      0 0 15px rgba(255, 79, 168, 0.5);
+  }
+
+  .nombre-portada {
+    text-shadow:
+      -1px -1px 0 var(--blanco),
+      1px -1px 0 var(--blanco),
+      -1px 1px 0 var(--blanco),
+      1px 1px 0 var(--blanco),
+      3px 3px 0 var(--dorado),
+      4px 4px 0 rgba(0, 0, 0, 0.1),
+      0 0 15px rgba(255, 213, 79, 0.5);
+  }
+
+  .texto-bienvenida,
+  .cumple-portada,
+  .diversion {
+    text-shadow:
+      -1px -1px 0 var(--rosa-fuerte),
+      1px -1px 0 var(--rosa-fuerte),
+      -1px 1px 0 var(--rosa-fuerte),
+      1px 1px 0 var(--rosa-fuerte),
+      2px 2px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .titulo-compartidos {
+    text-shadow:
+      -1px -1px 0 var(--blanco),
+      1px -1px 0 var(--blanco),
+      -1px 1px 0 var(--blanco),
+      1px 1px 0 var(--blanco),
+      3px 3px 0 var(--lila),
+      4px 4px 0 rgba(0, 0, 0, 0.1),
+      0 0 15px rgba(255, 79, 168, 0.4);
+  }
+
+  .no-faltes {
+    text-shadow:
+      -1px -1px 0 var(--blanco),
+      1px -1px 0 var(--blanco),
+      -1px 1px 0 var(--blanco),
+      1px 1px 0 var(--blanco),
+      3px 3px 0 var(--dorado),
+      4px 4px 0 rgba(0, 0, 0, 0.1),
+      0 0 15px rgba(255, 213, 79, 0.4);
+  }
+
+  .slide-despedida .slide-content {
+    padding-bottom: 110px;
+    gap: 6px;
+  }
+}
+
+/* ===== Pantallas bajas: compactar despedida ===== */
+@media (max-height: 600px) {
+  .slide-despedida .slide-content {
+    padding-bottom: 85px;
+    gap: 5px;
+    padding-top: 5px;
+  }
+
+  .slide-despedida .banner {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+
+  .titulo-compartidos {
+    font-size: clamp(1.25rem, 5.5vw, 1.8rem);
+  }
+
+  .corazon-central {
+    font-size: 1.7rem;
+  }
+
+  .no-faltes {
+    font-size: clamp(1.35rem, 6.5vw, 2rem);
+  }
+
+  .slide-despedida .boton {
+    padding: 11px 16px;
+    font-size: 0.85rem;
+  }
+
+  .personaje-despedida {
+    width: 80px;
+    height: 80px;
+  }
+
+  .personajes-despedida {
+    bottom: 3%;
+  }
+}
+
+/* ===== Pantallas muy bajas (iPhone 4 / SE antiguo) ===== */
+@media (max-height: 480px) {
+  .slide-despedida {
+    justify-content: flex-start;
+  }
+
+  .slide-despedida .slide-content {
+    padding-top: 10px;
+    padding-bottom: 75px;
+    gap: 4px;
+    min-height: auto;
+  }
+
+  .slide-despedida .banner {
+    padding: 5px 10px;
+    font-size: 0.7rem;
+  }
+
+  .titulo-compartidos {
+    font-size: 1.15rem;
+  }
+
+  .corazon-central {
+    font-size: 1.4rem;
+  }
+
+  .no-faltes {
+    font-size: 1.25rem;
+  }
+
+  .slide-despedida .boton {
+    padding: 9px 12px;
+    font-size: 0.78rem;
+    border-width: 2px;
+  }
+
+  .diversion {
+    font-size: 0.85rem;
+  }
+
+  .personaje-despedida {
+    width: 60px;
+    height: 60px;
+  }
+
+  .personajes-despedida {
+    bottom: 1%;
+  }
 }
 
 @media (min-width: 431px) {
