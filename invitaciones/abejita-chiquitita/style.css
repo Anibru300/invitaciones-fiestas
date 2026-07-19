@@ -285,7 +285,7 @@ button {
   min-height: 100dvh;
   scroll-snap-align: start;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -493,9 +493,9 @@ button {
 
 .tarro-miel {
   position: absolute;
-  top: 9%;
-  font-size: 2.6rem;
-  z-index: 7;
+  top: 7%;
+  font-size: 2.8rem;
+  z-index: 12;
   filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.12));
   animation: flotar 3.5s ease-in-out infinite;
 }
@@ -609,7 +609,7 @@ button {
   transform: translateX(-50%);
   width: clamp(170px, 46vw, 230px);
   height: clamp(170px, 46vw, 230px);
-  z-index: 4;
+  z-index: 50;
 }
 
 .abeja-portada {
@@ -624,7 +624,7 @@ button {
   position: absolute;
   object-fit: contain;
   filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.14));
-  z-index: 4;
+  z-index: 50;
   animation: volarPeque 4s ease-in-out infinite;
 }
 

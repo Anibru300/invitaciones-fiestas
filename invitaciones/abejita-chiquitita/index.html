@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Fredoka:wght@400;500;600;700&family=Lilita+One&family=Pacifico&display=swap">
-  <link rel="stylesheet" href="style.css?v=16" />
+  <link rel="stylesheet" href="style.css?v=17" />
 </head>
 <body>
   <div class="app">
@@ -194,9 +194,6 @@
           <a class="boton boton-verde animar animar-6" href="https://wa.me/5216311912233?text=¡Hola!%20Confirmo%20mi%20asistencia%20al%20primer%20añito%20de%20Kayli%20Isabella%20🐝" target="_blank" rel="noopener">
             <span>💬</span> Confirmar asistencia
           </a>
-          <button class="boton boton-lila animar animar-7" type="button" onclick="compartirInvitacion()">
-            <span>🔗</span> Compartir invitación
-          </button>
         </div>
 
         <div class="personajes-despedida">
@@ -463,8 +460,7 @@
       currentSlide = index;
       pendingIndex = null;
 
-      const targetTop = slides[index].offsetTop;
-      container.scrollTo({ top: targetTop, behavior });
+      slides[index].scrollIntoView({ behavior, block: 'start' });
 
       updateDots();
       playSlideSound();
@@ -476,7 +472,7 @@
         if (pendingIndex !== null && pendingIndex !== currentSlide) {
           goToSlide(pendingIndex);
         }
-      }, behavior === 'smooth' ? 900 : 150);
+      }, behavior === 'smooth' ? 1100 : 150);
     }
 
     function activateSlideAnimations(index) {
@@ -535,6 +531,40 @@
         setTimeout(() => keyThrottle = false, 700);
       }
     });
+
+    // Control de scroll con rueda (desktop)
+    let wheelThrottle = false;
+    container.addEventListener('wheel', (e) => {
+      if (overlay.classList.contains('oculto') === false) return;
+      if (wheelThrottle) {
+        e.preventDefault();
+        return;
+      }
+      e.preventDefault();
+      wheelThrottle = true;
+      const direction = Math.sign(e.deltaY);
+      goToSlide(currentSlide + direction);
+      setTimeout(() => wheelThrottle = false, 900);
+    }, { passive: false });
+
+    // Control de swipe (móvil)
+    let touchStartY = 0;
+    let touchThrottle = false;
+    container.addEventListener('touchstart', (e) => {
+      if (overlay.classList.contains('oculto') === false) return;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    container.addEventListener('touchend', (e) => {
+      if (overlay.classList.contains('oculto') === false) return;
+      if (touchThrottle) return;
+      const deltaY = touchStartY - e.changedTouches[0].clientY;
+      if (Math.abs(deltaY) > 40) {
+        touchThrottle = true;
+        goToSlide(currentSlide + Math.sign(deltaY));
+        setTimeout(() => touchThrottle = false, 900);
+      }
+    }, { passive: true });
 
     // ===== Efectos de entrada =====
     function crearConfeti() {
